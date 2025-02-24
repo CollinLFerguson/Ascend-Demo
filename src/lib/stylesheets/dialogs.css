@@ -1,0 +1,57 @@
+.dialog-header {
+	border-bottom: var(--spacing00) solid var(--neutral-050);
+	display: flex;
+	flex-direction: row;
+	height: fit-content;
+	justify-content: space-between;
+	min-height: 105px;
+	padding: var(--spacing09) var(--spacing09) var(--spacing09) var(--spacing11);
+	width: 100%;
+}
+
+.dialog-body {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	max-height: 60vh;
+	overflow-y: auto;
+	padding: var(--spacing09);
+	width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+	.dialog-body {
+		padding: var(--spacing09) var(--spacing11);
+	}
+}
+
+.dialog-footer {
+	border-top: var(--spacing00) solid var(--neutral-050);
+	display: flex;
+	flex-direction: row;
+	height: 105px;
+	justify-content: space-between;
+	padding: var(--spacing09);
+	width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+	.dialog-footer {
+		padding: var(--spacing09) var(--spacing09) var(--spacing11) var(--spacing09);
+	}
+}
+
+.dialog-header-slot-contents,
+.dialog-footer-slot-contents {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.dialog-body-slot-contents {
+	display: flex;
+	flex-direction: column;
+	gap: var(--spacing09);
+	overflow-y: auto;
+}

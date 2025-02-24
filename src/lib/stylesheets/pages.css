@@ -1,0 +1,21 @@
+:root {
+	--scrollbar-m-height: 10var (--spacing01);
+	--scrollbar-m-radius: var(--spacing08);
+	--scrollbar-m-width: var(--spacing03);
+
+	--scrollbar-s-height: 10var (--spacing01);
+	--scrollbar-s-radius: var(--spacing08);
+	--scrollbar-s-width: var(--spacing02);
+}
+
+html {
+	background-color: var(--white-trans-900);
+	height: 100vh;
+	width: var(--full-width);
+}
+
+body {
+	font-family: 'Manrope', sans-serif;
+	height: 100vh;
+	width: var(--full-width);
+}

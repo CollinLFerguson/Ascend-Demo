@@ -1,0 +1,168 @@
+:root {
+	--primary-000: #fffefb;
+	--primary-050: #fffdf2;
+	--primary-100: #fffbe7;
+	--primary-200: #fff4c5;
+	--primary-300: #ffec99;
+	--primary-400: #ffe366;
+	--primary-500: #ffd449;
+	--primary-600: #ffbd14;
+	--primary-700: #ff702e;
+	--primary-800: #aa4111;
+	--primary-900: #9b3709;
+
+	--secondary-000: #fffaf9;
+	--secondary-050: #fff3f0;
+	--secondary-100: #fee3dd;
+	--secondary-200: #fdc8bc;
+	--secondary-300: #fdac9a;
+	--secondary-400: #fc846a;
+	--secondary-500: #fb7557;
+	--secondary-600: #ff0040;
+	--secondary-700: #d00b4d;
+	--secondary-800: #960837;
+	--secondary-900: #7c032b;
+
+	--tertiary-000: #fcfaff;
+	--tertiary-050: #f8f4ff;
+	--tertiary-100: #f3edff;
+	--tertiary-200: #ebe0ff;
+	--tertiary-300: #c4adff;
+	--tertiary-400: #917aff;
+	--tertiary-500: #6647ff;
+	--tertiary-600: #5805ff;
+	--tertiary-700: #4900db;
+	--tertiary-800: #37009e;
+	--tertiary-900: #25006b;
+
+	--neutral-000: #fefdff;
+	--neutral-050: #f3f1fd;
+	--neutral-100: #e7e4f4;
+	--neutral-200: #c7c3dc;
+	--neutral-300: #9e99b9;
+	--neutral-400: #6f6697;
+	--neutral-500: #544a83;
+	--neutral-600: #3b3168;
+	--neutral-700: #2b2154;
+	--neutral-800: #140d31;
+	--neutral-900: #0d0725;
+
+	--error-000: #fffafa;
+	--error-050: #fef3f2;
+	--error-100: #fee4e2;
+	--error-200: #ffcdca;
+	--error-300: #fda29b;
+	--error-400: #fa7066;
+	--error-500: #f04438;
+	--error-600: #d92d20;
+	--error-700: #b42318;
+	--error-800: #912018;
+	--error-900: #7a271a;
+
+	--warning-000: #fffdf6;
+	--warning-050: #fffaeb;
+	--warning-100: #fef0c7;
+	--warning-200: #fedf89;
+	--warning-300: #fec84b;
+	--warning-400: #fdb022;
+	--warning-500: #f79009;
+	--warning-600: #dc6803;
+	--warning-700: #b54708;
+	--warning-800: #93370d;
+	--warning-900: #7a2e0e;
+
+	--success-000: #f6fffa;
+	--success-050: #ecfdf3;
+	--success-100: #d1fadf;
+	--success-200: #a6f4c5;
+	--success-300: #6ce9a6;
+	--success-400: #32d583;
+	--success-500: #12b76a;
+	--success-600: #039855;
+	--success-700: #027a48;
+	--success-800: #05603a;
+	--success-900: #054f31;
+
+	--primary-trans-000: rgba(255, 212, 73, 0.02);
+	--primary-trans-025: rgba(255, 212, 73, 0.05);
+	--primary-trans-050: rgba(255, 212, 73, 0.1);
+	--primary-trans-100: rgba(255, 212, 73, 0.2);
+	--primary-trans-200: rgba(255, 212, 73, 0.3);
+	--primary-trans-300: rgba(255, 212, 73, 0.4);
+	--primary-trans-400: rgba(255, 212, 73, 0.5);
+	--primary-trans-500: rgba(255, 212, 73, 0.6);
+	--primary-trans-550: rgba(225, 212, 73, 0.65);
+	--primary-trans-600: rgba(255, 212, 73, 0.7);
+	--primary-trans-700: rgba(255, 212, 73, 0.8);
+	--primary-trans-800: rgba(255, 212, 73, 0.9);
+	--primary-trans-900: rgba(255, 212, 73, 1);
+
+	--secondary-trans-000: rgba(251, 117, 87, 0.02);
+	--secondary-trans-025: rgba(251, 117, 87, 0.05);
+	--secondary-trans-050: rgba(251, 117, 87, 0.1);
+	--secondary-trans-100: rgba(251, 117, 87, 0.2);
+	--secondary-trans-200: rgba(251, 117, 87, 0.3);
+	--secondary-trans-300: rgba(251, 117, 87, 0.4);
+	--secondary-trans-400: rgba(251, 117, 87, 0.5);
+	--secondary-trans-500: rgba(251, 117, 87, 0.6);
+	--secondary-trans-550: rgba(251, 117, 87, 0.65);
+	--secondary-trans-600: rgba(251, 117, 87, 0.7);
+	--secondary-trans-700: rgba(251, 117, 87, 0.8);
+	--secondary-trans-800: rgba(251, 117, 87, 0.9);
+	--secondary-trans-900: rgba(251, 117, 87, 1);
+
+	--neutral-trans-000: rgba(13, 7, 37, 0.02);
+	--neutral-trans-025: rgba(13, 7, 37, 0.05);
+	--neutral-trans-050: rgba(13, 7, 37, 0.1);
+	--neutral-trans-100: rgba(13, 7, 37, 0.2);
+	--neutral-trans-200: rgba(13, 7, 37, 0.3);
+	--neutral-trans-300: rgba(13, 7, 37, 0.4);
+	--neutral-trans-400: rgba(13, 7, 37, 0.5);
+	--neutral-trans-500: rgba(13, 7, 37, 0.6);
+	--neutral-trans-600: rgba(13, 7, 37, 0.7);
+	--neutral-trans-700: rgba(13, 7, 37, 0.8);
+	--neutral-trans-800: rgba(13, 7, 37, 0.9);
+	--neutral-trans-900: rgba(13, 7, 37, 1);
+
+	--white-trans-000: rgba(255, 255, 255, 0.02);
+	--white-trans-025: rgba(255, 255, 255, 0.05);
+	--white-trans-050: rgba(255, 255, 255, 0.1);
+	--white-trans-100: rgba(255, 255, 255, 0.2);
+	--white-trans-200: rgba(255, 255, 255, 0.3);
+	--white-trans-300: rgba(255, 255, 255, 0.4);
+	--white-trans-400: rgba(255, 255, 255, 0.5);
+	--white-trans-500: rgba(255, 255, 255, 0.6);
+	--white-trans-600: rgba(255, 255, 255, 0.7);
+	--white-trans-700: rgba(255, 255, 255, 0.8);
+	--white-trans-800: rgba(255, 255, 255, 0.9);
+	--white-trans-900: rgba(255, 255, 255, 1);
+
+	--background-base: white;
+	--error-base: var(--error-500);
+	--info-base: var(--neutral-050);
+	--neutral-light-base: var(--neutral-400);
+	--neutral-base: var(--neutral-800);
+	--neutral-trans-base: var(--neutral-trans-900);
+	--primary-base: var(--primary-500);
+	--primary-trans-base: var(--primary-trans-550);
+	--secondary-base: var(--secondary-500);
+	--secondary-trans-base: var(--secondary-trans-550);
+	--success-base: var(--success-400);
+	--tertiary-base: var(--tertiary-500);
+	--warning-base: var(--warning-300);
+	--white-base: white;
+	--white-trans-base: var(--white-trans-900);
+
+	--gradiant-100: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 4.13%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%, rgba(0, 0, 0, 0.5) 100%);
+	--gradiant-200: linear-gradient(58.7deg, #2a2737 3.84%, #3f3d4b 107.29%);
+	--gradiant-300: linear-gradient(82.66deg, rgba(0, 0, 0, 0.46) 32.47%, rgba(0, 0, 0, 0) 83.34%);
+	--gradiant-400: linear-gradient(248.95deg, rgba(255, 221, 71, 0.06) 0.95%, rgba(42, 39, 55, 0.6) 65.49%);
+	--gradiant-500: linear-gradient(233.57deg, var(--secondary-base) 20.21%, var(--primary-base) 71.15%);
+	--gradiant-600: linear-gradient(59.35deg, var(--primary-base) 3.83%, var(--secondary-base) 84.96%);
+	--gradiant-700: linear-gradient(279.26deg, var(--secondary-base) 4.89%, var(--primary-base) 102.3%);
+	--gradiant-800: linear-gradient(281.28deg, var(--secondary-base) 0%, var(--primary-base) 100%);
+	--gradiant-900: linear-gradient(59.35deg, var(--primary-trans-base0) 3.83%, var(--secondary-trans-base) 81.46%);
+
+	--scrollbar-light: var(--neutral-100);
+	--scrollbar-dark: var(--neutral-700);
+}

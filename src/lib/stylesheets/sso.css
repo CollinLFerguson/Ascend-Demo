@@ -1,0 +1,51 @@
+.sso-landing-page {
+    padding: var(--spacing09);
+    width: 100%;
+}
+.sso-hero-image {
+    height: 250px;
+    border-radius: var(--spacing10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing06);
+    background-position-y: 45%;
+}
+.sso-sections-container {
+    margin-top: 48px;
+}
+.sso-section {
+    padding: var(--spacing09) 0;
+    margin-bottom: var(--spacing09);
+}
+.sso-landing-headline {
+    margin-bottom: var(--spacing09);
+}
+
+.sso-link {
+    width: 45%;
+    text-decoration: none;
+    justify-self: stretch;
+}
+.sso-link:hover {
+    text-decoration: none;
+}
+.sso-card {
+    padding: var(--spacing10);
+    border-radius: 32px;
+    cursor: pointer;
+    height: 100%;
+}
+.sso-icon {
+    margin-bottom: var(--spacing06);
+}
+.sso-card-body {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing05);
+
+    & p {
+        color: var(--neutral-400);
+    }
+}

@@ -1,0 +1,224 @@
+button {
+	align-items: center;
+	background-color: transparent;
+	border-radius: var(--btn-border-radius);
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	display: flex;
+	text-decoration: none;
+}
+
+.button-wrapper {
+	align-items: center;
+	border-radius: var(--btn-border-radius);
+	display: flex;
+}
+
+.btn-content-wrapper {
+	align-items: center;
+	border-radius: var(--btn-border-radius);
+	display: flex;
+	gap: var(--spacing05);
+	height: 100%;
+	justify-content: center;
+	width: 100%;
+}
+
+/* Medium Buttons */
+.btn-m {
+	font-size: var(--spacing06);
+	padding: var(--spacing05);
+}
+
+.btn-m .btn-rect {
+	padding-left: var(--spacing09);
+	padding-right: var(--spacing09);
+}
+
+.btn-m .btn-rect:active,
+.btn-m .btn-rect:hover {
+	padding-bottom: var(--spacing04);
+	padding-left: var(--spacing07);
+	padding-right: var(--spacing07);
+	padding-top: var(--spacing04);
+}
+
+.btn-m .btn-square {
+	height: var(--spacing02);
+	width: var(--spacing02);
+}
+
+.btn-m .btn-square:active {
+	padding: var(--spacing04);
+}
+
+/* Large Buttons */
+.btn-l {
+	padding: var(--spacing06);
+}
+
+.btn-l .btn-circle {
+	border-radius: 50%;
+}
+
+.btn-l .btn-rect {
+	padding-left: var(--spacing09);
+	padding-right: var(--spacing09);
+}
+
+.btn-l .btn-square {
+	height: var(--spacing56);
+	width: var(--spacing56);
+}
+
+/* Justification */
+.btn-center {
+	justify-content: center;
+}
+
+.btn-left {
+	justify-content: start;
+}
+
+.btn-right {
+	justify-content: end;
+}
+
+/* Display */
+.btn-inline {
+	display: inline;
+}
+
+.padding-left {
+	padding-left: var(--spacing13);
+}
+
+/* Width */
+.btn-fit {
+	width: fit-content;
+}
+
+.btn-full {
+	width: 100%;
+}
+
+.btn-circle {
+	border-radius: 50%;
+}
+
+/* Colors and States */
+
+/* Primary */
+.btn-primary {
+	background-color: var(--primary-base);
+	border: none;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+	background-color: var(--secondary-base);
+}
+
+.btn-primary:disabled,
+.btn-primary-disabled {
+	background-color: var(--neutral-100);
+}
+
+/* Outline */
+.btn-outline,
+.btn-outline-disabled {
+	background-color: var(--background-base);
+	border: var(--neutral-stroke-100-s);
+}
+
+.btn-outline:active,
+.btn-outline:disabled,
+.btn-outline:focus,
+.btn-outline:hover,
+.btn-outline-disabled {
+	box-shadow: 0px 0px 0px var(--spacing00) var(--primary-400);
+}
+
+.btn-outline:disabled,
+.btn-outline-disabled {
+	background-color: var(--neutral-100);
+}
+
+/* Neutral */
+.btn-neutral,
+.btn-neutral-disabled {
+	background-color: var(--neutral-base);
+	border: var(--neutral-stroke-600-m);
+	color: var(--background-base);
+}
+
+.btn-neutral:active,
+.btn-neutral:focus,
+.btn-neutral:hover {
+	background-color: var(--neutral-600);
+}
+
+.btn-neutral:disabled,
+.btn-neutral-disabled {
+	background-color: var(--neutral-100);
+}
+
+/* White */
+.btn-white {
+	background-color: var(--background-base);
+}
+
+.btn-white:active,
+.btn-white:focus,
+.btn-white:hover {
+	background-color: var(--secondary-050);
+}
+
+.btn-white:disabled,
+.btn-white-disabled {
+	background-color: var(--neutral-100);
+}
+
+/* Link */
+.btn-link {
+	background-color: var(--background-base);
+	border: none;
+	color: var(--neutral-base);
+	font-weight: 600;
+	text-decoration: underline var(--neutral-100) var(--spacing01);
+}
+.btn-link:active,
+.btn-link:focus,
+.btn-link:hover {
+	text-decoration: underline var(--primary-500) var(--spacing01);
+}
+
+/* Disabled */
+
+.btn-disabled {
+	background-color: var(--neutral-100);
+}
+
+/* Tabs */
+
+.btn-tab {
+	padding: var(--spacing05) var(--spacing03);
+}
+
+/* Toasts */
+
+.btn-close-toast {
+	background-color: var(--neutral-base);
+	color: var(--background-base);
+	font-size: var(--spacing06);
+	height: var(--spacing10);
+	padding: var(--spacing05);
+	width: var(--spacing10);
+}
+.btn-close-toast:active,
+.btn-close-toast:focus,
+.btn-close-toast:hover {
+	background-color: var(--neutral-600);
+}

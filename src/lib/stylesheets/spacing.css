@@ -1,0 +1,52 @@
+:root {
+	--spacing00: 1px;
+	--spacing01: 2px;
+	--spacing02: 4px;
+	--spacing03: 8px;
+	--spacing04: 10px;
+	--spacing05: 12px;
+	--spacing06: 16px;
+	--spacing07: 18px;
+	--spacing08: 20px;
+	--spacing09: 24px;
+	--spacing10: 32px;
+	--spacing11: 40px;
+	--spacing12: 48px;
+	--spacing13: 64px;
+	--spacing14: 80px;
+	--spacing15: 96px;
+	--spacing16: 128px;
+	--spacing17: 160px;
+	--spacing18: 192px;
+	--spacing19: 224px;
+	--spacing20: 256px;
+	--spacing21: 288px;
+	--spacing22: 320px;
+	--spacing23: 352px;
+	--spacing24: 384px;
+	--spacing25: 416px;
+	--spacing26: 448px;
+	--spacing27: 484px;
+	--spacing28: 544px;
+	--spacing29: 608px;
+	--spacing30: 672px;
+	--spacing31: 736px;
+	--spacing32: 800px;
+	--spacing33: 1024px;
+	--spacing34: 1440px;
+	--spacing35: 2048px;
+
+	--breakpoint-xl: 1440px;
+	--breakpoint-l: 1439px;
+	--breakpoint-m: 1199px;
+	--breakpoint-s: 767px;
+
+	--container-max-width-full: 100%;
+	--container-max-width-xl: 1440px;
+	--container-max-width-l: 1160px;
+	--container-max-width-m: 644px;
+	--container-max-width-s: 280px;
+	--full-width: calc(100vw - (100vw - 100%));
+
+	--spacing56: 56px;
+}

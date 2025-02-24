@@ -1,0 +1,19 @@
+:root {
+	--neutral-stroke-000-s: var(--spacing00) solid var(--neutral-000);
+	--neutral-stroke-100-s: var(--spacing00) solid var(--neutral-100);
+	--neutral-stroke-200-s: var(--spacing00) solid var(--neutral-200);
+	--neutral-stroke-600-s: var(--spacing00) solid var(--neutral-600);
+	--neutral-stroke-700-s: var(--spacing00) solid var(--neutral-700);
+
+	--neutral-stroke-000-m: var(--spacing01) solid var(--neutral-000);
+	--neutral-stroke-100-m: var(--spacing01) solid var(--neutral-100);
+	--neutral-stroke-200-m: var(--spacing01) solid var(--neutral-200);
+	--neutral-stroke-600-m: var(--spacing01) solid var(--neutral-600);
+	--neutral-stroke-700-m: var(--spacing01) solid var(--neutral-700);
+
+	--secondary-stroke-500-s: var(--spacing00) solid var(--secondary-500);
+	--secondary-stroke-500-m: var(--spacing01) solid var(--secondary-500);
+
+	--white-stroke-900-s: var(--spacing00) solid var(--white-trans-900);
+	--white-stroke-900-m: var(--spacing01) solid var(--white-trans-900);
+}

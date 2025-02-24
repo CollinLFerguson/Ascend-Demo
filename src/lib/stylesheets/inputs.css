@@ -1,0 +1,14 @@
+input[class*='input'] {
+	border: var(--neutral-stroke-100-s);
+	border-radius: var(--spacing05);
+	padding: var(--spacing05) var(--spacing09);
+}
+input[class*='input']:active,
+input[class*='input']:focus,
+input[class*='input']:hover {
+	box-shadow: 0px 0px 0px var(--spacing00) var(--primary-400);
+}
+input[class*='error'],
+input[class*='input']:invalid {
+	border: var(--spacing00) solid var(--error-base);
+}
