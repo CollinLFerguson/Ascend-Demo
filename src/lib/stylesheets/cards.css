@@ -2,7 +2,7 @@
 	align-items: space-between;
 	background-color: var(--white-trans-900);
 	border-radius: var(--spacing10);
-	border: var(--spacing00) solid var(--neutral-trans-100);
+	border: var(--spacing02) solid var(--neutral-trans-200);
 	display: flex;
 	flex-direction: column;
 	max-height: var(--spacing25);

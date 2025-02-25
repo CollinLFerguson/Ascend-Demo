@@ -7,33 +7,55 @@
     const navBarContents = {
         startOpen: true,
         primaryPageList: [
-                {
+            {
                     startOpen: true,
                     icon: HomeIcon,
-                    text: 'Main Stuff',
+                    text: 'Home',
                     url: '/',
-                    sublinks: [
-                        {
-                            text: 'Main thing 1',
-                            url: '',
-                        }
-                    ],
-                },
-                {
-                    icon: TemplatesIcon,
-                    text: 'Other Stuff',
+            },
+            {
+                    startOpen: true,
+                    icon: HomeIcon,
+                    text: 'Metrics',
                     url: '/',
-                    sublinks: [
-                        {
-                            text: 'Main thing 2',
-                            url: '',
-                        },
-                    ],
-                },
-            ],
-        }
+                    sublinks: []
+            },
+            {
+                startOpen: true,
+                icon: HomeIcon,
+                text: 'Staff',
+                url: '/containers/staff',
+            },
+            {
+                startOpen: true,
+                icon: HomeIcon,
+                text: 'Caregivers',
+                url: '/containers/staff',
+            },
+            {
+                startOpen: true,
+                icon: HomeIcon,
+                text: 'Children',
+                url: '/containers/staff',
+            },
+            {
+                startOpen: true,
+                icon: HomeIcon,
+                text: 'Administration',
+                url: '/containers/staff',
+            },
+            {
+                icon: TemplatesIcon,
+                text: 'About Me',
+                url: '/containers/aboutme'
+            },
+        ],
+    }
 </script>
-
+<svelte:head>
+    <title>Ascend Innovations: Demo</title>
+    <link rel="icon" type="image/png" href="./src/routes/assets/favicon.ico"/>
+</svelte:head>
 <Shell>
     <NavBar 
         keepOpen={true}
@@ -42,9 +64,9 @@
         {navBarContents}
     />
     <Main>
-        <div style="display:flex; text-align:left;">
-            <HeaderBar >
-                <h2>Collin Ferguson's Ascend Demo</h2>
+        <div>
+            <HeaderBar style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
+                    <ProfileButton url="/" />
             </HeaderBar>
         </div>
         <div style="overflow:auto">
@@ -53,4 +75,3 @@
     </Main>
     <ToastArea />
 </Shell>
-
