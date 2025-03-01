@@ -64,12 +64,12 @@
         {navBarContents}
     />
     <Main>
-        <div>
+        <div style="overflow:auto">
             <HeaderBar style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
                     <ProfileButton url="/" />
             </HeaderBar>
         </div>
-        <div style="overflow:auto">
+        <div >
         <slot />
         </div>
     </Main>

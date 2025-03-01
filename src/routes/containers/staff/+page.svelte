@@ -9,7 +9,7 @@
     ]
 
     let currentTab = "My Staff"
-
+    let fromSearch = false;
     /**
      * @param {{ detail: string; }} event
      */
@@ -19,8 +19,8 @@
 
 </script>
 
-<Page styles={["horizontal-padding:5vw", "justify-content:left", "max-width:1400px"]}>
-    <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:95%; gap:60px"> <!--Whole page-->
+<Page styles={["horizontal-padding:5vw", "justify-content:left"]}>
+    <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:100%; gap:60px; max-width:80vw"> <!--Whole page-->
         <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:95%; gap:20px"> <!--Header Section-->
             <div style="height:8vw; border-left:4px solid #E0E7FF; justify-content:left;"> <!--header bar components-->
                 <PageHeader titleText="Staff" titleJustification="left" styles={["justify-content:left"]} >
@@ -60,29 +60,17 @@
         <div> <!--Content Section-->
             <div style="display:flex; gap: 10px; justify-content:left">
                 <TabBar bind:currentTab {tabList} on:tabselect={handleTabSelect} />
-
             </div>
-            <div style="display:flex; gap: 10px; justify-content:left">
-                {#if currentTab == "My Staff"}
-                    <PreviewStaffTable></PreviewStaffTable>
-                {:else}
-                    <p>I don't exist yet</p>
-                {/if}
+            <div style= "display:flex; flex-direction:column; gap:20px;">
+                <hr>
+                <div style="display:flex; gap: 10px; justify-content:left">
+                    {#if currentTab == "My Staff"}
+                        <PreviewStaffTable fromSearch={true /*fromSearch*/} showNothing={false}></PreviewStaffTable> <!-- Add callback for fetching staff associated with this user -->
+                    {:else}
+                        <PreviewStaffTable fromSearch={fromSearch} showNothing={true}></PreviewStaffTable> <!-- Add callback for fetching all staff -->
+                    {/if}
+                </div>
             </div>
         </div>
     </div>
-    <PageBody size="full">
-        <div class="borders"> 
-            <h1>Welcome {data.user.firstName} {data.user.lastName}!</h1>
-        </div>
-    </PageBody>
 </Page>
-
-<style>
-.metric-card {
-
-
-}
-
-
-</style>

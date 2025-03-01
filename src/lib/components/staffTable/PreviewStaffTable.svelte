@@ -1,5 +1,9 @@
 <script>
-	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton } from 'ascend-ui'
+	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton } from 'ascend-ui'
+    import NextButtonNavigation from './components/NextButtonNavigation.svelte';
+	export let fromSearch;
+	export let showNothing;
+
 
 	function generateRandomData() {
 		const names = ["John Doe", "Jane Smith", "Michael Johnson", "Emily Davis", "David Wilson"];
@@ -52,47 +56,22 @@
 	}
 
 
-	// let list = [
-	// 	{
-	// 		array: ['1', '3', '5'],
-	// 		boolean: true,
-	// 		button: EditButton,
-	// 		checkbox: false,
-	// 		date: '1/10/2022',
-	// 		default: 'B Default Text',
-	// 		editable: 'B Editable Text',
-	// 		radio: true,
-	// 		status: 'pending',
-	// 		logoKey: '/src/lib/assets/images/default-logo.png',
-	// 		key: 'Text One',
-	// 		linkKey: '1234567890',
-	// 	},
-	// 	{
-	// 		array: ['2', '4', '6'],
-	// 		boolean: false,
-	// 		button: EditButton,
-	// 		checkbox: true,
-	// 		date: new Date('10/6/2023'),
-	// 		default: 'A Default Text',
-	// 		editable: 'A Editable Text',
-	// 		radio: false,
-	// 		status: 'Approved',
-	// 		logoKey: '/src/lib/assets/images/default-logo.png',
-	// 		key: 'Text Two',
-	// 		linkKey: '',
-	// 	},
-	// 	{
-	// 		array: ['1', '2', '3'],
-	// 		boolean: true,
-	// 		button: EditButton,
-	// 		checkbox: true,
-	// 		date: new Date('12/12/2024'),
-	// 		default: 'C Default Text',
-	// 		editable: 'C Editable Text',
-	// 		radio: true,
-	// 		status: 'pending',
-	// 	},
-	// ]
+	
+	function handleButtonClick(){
+		console.log("buttonclick");
+	}
+	/*
+	const NextButtonWithClick = () => ({
+		component: NextButton,
+		props: {
+			onClick: () => handleButtonClick(), // Ensures the handler is correctly set
+		},
+	});
+	*/
+
+	if(showNothing){
+		list = [];
+	}
 
 	const columns = [
 		{
@@ -112,7 +91,7 @@
 			component: StatusTag,
 			key: 'status',
 			type: 'tag',
-			tagMap: { approved: 'warning', pending: 'neutral', tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }},
+			tagMap: { approved: 'warning', pending: 'neutral', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
 			styles: ['flex: 1',  'overflow: hidden'], //'max-width: 140px', 'min-width: 100px',
 		},
 		{
@@ -122,14 +101,31 @@
 			styles: ['flex: 1',  'overflow: hidden'] //'max-width: 150px', 'min-width: 100px',
 		},
 		{
-			component: NextButton,
+			component: NextButtonNavigation, //Having issues with built in buttons, have to build wrappers around them all??
 			key: 'button',
 			type: 'button',
 			styles: ['flex: 1', "justify-items:right", "padding-right:20px", 'overflow: hidden'],
-		},
+		}
 	]
+
 </script>
-		<PaginatedTable
-			{columns}
-			{list}
-		/>
+
+{#if list.length != 0}
+<PaginatedTable
+	{columns}
+	{list}
+
+/>
+{:else if list.length == 0 && fromSearch == false}
+<Alert
+	icon={AlertCircleSmallIcon}
+	title="No Staff Member To Display!"
+	body="When staff members are assigned to you they will appear here."
+	/>
+{:else if list.length == 0 && fromSearch == true}
+	<Alert
+	icon={AlertCircleSmallIcon}
+	title="No Results To Display!"
+	body="No staff members fit your current filter or search terms. Please clear or change your filters or search to view results."
+/>
+{/if}
