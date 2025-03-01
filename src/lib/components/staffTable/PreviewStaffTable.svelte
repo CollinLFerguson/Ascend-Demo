@@ -101,7 +101,7 @@
 			styles: ['flex: 1',  'overflow: hidden'] //'max-width: 150px', 'min-width: 100px',
 		},
 		{
-			component: NextButtonNavigation, //Having issues with built in buttons, have to build wrappers around them all??
+			component: NextButton, //Having issues with built in buttons, have to build wrappers around them all??
 			key: 'button',
 			type: 'button',
 			styles: ['flex: 1', "justify-items:right", "padding-right:20px", 'overflow: hidden'],
