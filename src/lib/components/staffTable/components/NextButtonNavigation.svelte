@@ -21,6 +21,6 @@
 
 
   </script>
-  
-  <button type="button" on:click={handleClick}>Click Me</button>
+  <NextButton callback={handleClick} />
+  <!-- <button type="button" on:click={handleClick}>Click Me</button>-->
   

@@ -1,70 +1,34 @@
 <script>
+	import { onMount } from 'svelte';
 	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow } from 'ascend-ui'
     import NextButtonNavigation from './components/NextButtonNavigation.svelte';
-	export let fromSearch;
-	export let showNothing;
-
-
-	function generateRandomData() {
-		const names = ["John Doe", "Jane Smith", "Michael Johnson", "Emily Davis", "David Wilson"];
-		const domains = ["example.com", "randommail.com", "testemail.com", "fakeemail.com"];
-		const statuses = ["Approved", "Pending"];
-		
-		function getRandomItem(arr) {
-			return arr[Math.floor(Math.random() * arr.length)];
-		}
-
-		const data = [];
-		
-		for (let i = 0; i < 50; i++) {
-			const name = getRandomItem(names);
-			const email = `${name.split(' ').join('.').toLowerCase()}@${getRandomItem(domains)}`;
-			const status = getRandomItem(statuses);
-			const date = generateRandomDate();
-			
-			data.push({
-				name: name,
-				email: email,
-				status: status,
-				date: date,
-				dbkey: i
-			});
-		}
-
-		return data;
-	}
-
-	const randomData = generateRandomData();
-	let list = randomData
-
-	function generateRandomDate() {
-		const startDate = new Date(2000, 0, 1); // Start from January 1, 2000
-		const endDate = new Date(); // Current date
-
-		// Generate a random timestamp between start and end date
-		const randomTimestamp = startDate.getTime() + Math.random() * (endDate.getTime() - startDate.getTime());
-
-		// Create a new Date object with the random timestamp
-		const randomDate = new Date(randomTimestamp);
-
-		// Extract the date components
-		const month = String(randomDate.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
-		const day = String(randomDate.getDate()).padStart(2, '0');
-		const year = randomDate.getFullYear();
-
-		// Return the formatted date
-		return `${month}-${day}-${year}`;
-	}
-
+	
+	export let fromSearch = false; // if the request is utilizing the search function.
+	
+	export let searchTerm = "";
+	export let programs = [];
+	export let allowedStatus = [];
+	
+	export let showNothing = false; //testing function
 
 	
-	async function handleButtonClick_1(){
-		console.log("here!")
+	export let list = [];
+
+	onMount(() => { //Fetches the tabledata when the component is loaded 
+		if (!showNothing) {
+			fetchUsers({type:"staff", term:searchTerm, programs:programs, statuses:allowedStatus});
+			//list = [];
+		} else {
+			list = [];
+		}
+	});
+
+	async function fetchUsers(params = {}) {
 		try {
-			const response = await fetch("/api/DatabaseTest", {
+			const response = await fetch("/api/StaffController", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify("msg:hello"),
+				body: JSON.stringify(params),
 			});
 
 			if (!response.ok) throw new Error("Databast failed");
@@ -72,24 +36,41 @@
 			const data = await response.json();
 
 			console.log(data)
+			
+			list = data.users;
+
 		} catch (error) {
 			console.error("Login error:", error);
 		}
 	}
-	/*
-	const NextButtonWithClick = () => ({
-		component: NextButton,
-		props: {
-			onClick: () => handleButtonClick(), // Ensures the handler is correctly set
-		},
-	});
-	*/
+	
+	async function handleButtonClick_1(){
+		console.log("here!")
 
-	if(showNothing){
-		list = [];
+		try {
+			const response = await fetch("/api/StaffController", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify({type:"staff"}),
+			});
+
+			if (!response.ok) throw new Error("Databast failed");
+
+			const data = await response.json();
+			console.log(data)
+			return data
+		} catch (error) {
+			console.error("Login error:", error);
+		}
 	}
 
 	const columns = [
+		{
+			title: 'DB Key',
+			key: 'dbkey',
+			type: 'text',
+			styles: ['flex: 1', 'overflow: hidden', "display:none"],
+  		},	
 		{
 			title: 'Name',
 			key: 'name',
@@ -97,41 +78,39 @@
 			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
 		},
 		{
-			title: 'Email',
-			key: 'email',
+			title: 'Title',
+			key: 'title',
 			type: 'text',
-			styles: ['flex: 2', , 'text-overflow: ellipsis','overflow: hidden'] //'max-width: 250px', 'min-width: 100px'
+			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
 		},
 		{
-			title: 'Tag',
+			title: 'Program',
+			key: 'program_display_name',
+			type: 'text',
+			styles: ['flex: 2', , 'text-overflow: ellipsis','overflow: hidden', 'font-weight: bold'] //'max-width: 250px', 'min-width: 100px'
+		},
+		{
+			title: 'Supervisor',
+			key: 'supervisor_name',
+			type: 'text',
+			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+		},
+		{
+			title: 'Status',
 			component: StatusTag,
 			key: 'status',
 			type: 'tag',
-			tagMap: { approved: 'warning', pending: 'neutral', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
+			tagMap: { active: 'warning', archived: 'neutral', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
 			styles: ['flex: 1',  'overflow: hidden'], //'max-width: 140px', 'min-width: 100px',
 		},
-		{
-			title: 'Date',
-			type: 'datetime',
-			key: 'date',
-			styles: ['flex: 1',  'overflow: hidden'] //'max-width: 150px', 'min-width: 100px',
-		}
-		,
 		{
 			title: 'Action',
 			key: 'action',
 			type: 'button',
 			onclick: () => alert("in"),
 			component: NextButtonNavigation,
-		},  
-		{
-			title: 'DB Key',
-			key: 'dbkey',
-			type: 'text',
-			styles: ['flex: 1', 'overflow: hidden', "display:none"],
-  		},
+		}
 	]
-
 </script>
 
 
