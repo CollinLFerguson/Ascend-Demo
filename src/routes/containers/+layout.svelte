@@ -56,7 +56,7 @@
     }
     
     function customURL(){
-        goto("/auth",{ replaceState: true, reload: true })
+        goto("/auth")
     }
 
 </script>

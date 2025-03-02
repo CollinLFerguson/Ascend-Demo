@@ -1,7 +1,7 @@
 <script>
     import{Button, Card, LoginCard, LoginPage, Main, Page, PageBody, SelectorInput, Shell} from 'ascend-ui'
     
-    export let data;
+    export let data
 
     const optionsList = ["Super Admin User","Supervisor User","Home User"]
     let selectedUser = "Super Admin User"; // Make selectedUser reactive in the component

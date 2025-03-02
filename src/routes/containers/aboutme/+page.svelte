@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 	import { Accordion, MainContent, Button, PageBody, Page, Card, NewNotificationIcon } from 'ascend-ui'
-    import {GitHubIcon, LinkedInIcon} from '$lib/index'
+    import {GitHubIcon, LinkedInIcon} from '$lib/client/index'
 
 </script>
 

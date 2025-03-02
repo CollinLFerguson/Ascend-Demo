@@ -8,3 +8,6 @@ export { default as LinkedInIcon } from '$lib/assets/LinkedInIcon.svelte'
 
 // Tables
 export {default as PreviewStaffTable} from '$lib/components/staffTable/PreviewStaffTable.svelte'
+
+//classes 
+//export {DatabaseConnector} from '$lib/class/databaseController'

@@ -1,6 +1,6 @@
 <script>
 	import { Accordion, MainContent, Button, PageBody, Page, Card, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar } from 'ascend-ui'
-    import {GitHubIcon, LinkedInIcon, PreviewStaffTable} from '$lib/index'
+    import {GitHubIcon, LinkedInIcon, PreviewStaffTable} from '$lib/client/index'
 
     export let data;
     let tabList=[

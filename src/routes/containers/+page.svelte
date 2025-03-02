@@ -2,7 +2,7 @@
     import { goto } from '$app/navigation';
     import{Button, Card, LoginCard, LoginPage, Page, PageBody, SelectorInput} from 'ascend-ui'
     
-    goto("./staff")
+    goto("containers/staff")
 
 </script>
 

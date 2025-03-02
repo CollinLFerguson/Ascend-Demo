@@ -108,21 +108,13 @@
 			type: 'button',
 			onclick: () => alert("in"),
 			component: NextButtonNavigation,
-			componentProps: () => ({
-				row: { name: 'Fake Name', email: 'fake@example.com' },
-				callback: () => handleButtonClick_1('fake-row')
-			})
 		},  
 		{
-    	title: 'DB Key',
-    	key: 'dbkey',
-    	type: 'text',
-    	styles: ['flex: 1', 'overflow: hidden', "display:none"],
-  },
-
-
-
-
+			title: 'DB Key',
+			key: 'dbkey',
+			type: 'text',
+			styles: ['flex: 1', 'overflow: hidden', "display:none"],
+  		},
 	]
 
 </script>
