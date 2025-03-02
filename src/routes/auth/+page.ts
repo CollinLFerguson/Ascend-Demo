@@ -1,12 +1,11 @@
 import { json } from '@sveltejs/kit';
-import type { PageLoad } from './$types';
+import type { PageLoad } from '../$types';
+import { goto } from '$app/navigation';
 
-let API_URL = "/api/login"
+let API_URL = "/api/LoginController"
 
 export const load = (async () => {
-    
-    let selectedUser = "";
-    const submitLogin = () => {
+    const submitLogin = (selectedUser:string) => {
         let loginInfo
         console.log("SELECTED USER: ", selectedUser)
         switch(selectedUser){
@@ -31,8 +30,8 @@ export const load = (async () => {
             },
             body: JSON.stringify(loginInfo)
             })
-        .then(() => {window.location = "/containers/staff"})
+        .then(() => goto("/containers/staff"))
     }
 
-    return {submitLogin, selectedUser};
+    return {submitLogin};
 }) satisfies PageLoad;

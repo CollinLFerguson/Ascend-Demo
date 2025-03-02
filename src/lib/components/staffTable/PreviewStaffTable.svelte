@@ -1,5 +1,5 @@
 <script>
-	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton } from 'ascend-ui'
+	import { EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow } from 'ascend-ui'
     import NextButtonNavigation from './components/NextButtonNavigation.svelte';
 	export let fromSearch;
 	export let showNothing;
@@ -26,7 +26,8 @@
 				name: name,
 				email: email,
 				status: status,
-				date: date
+				date: date,
+				dbkey: i
 			});
 		}
 
@@ -57,8 +58,8 @@
 
 
 	
-	function handleButtonClick(){
-		console.log("buttonclick");
+	function handleButtonClick_1(row){
+		console.log("buttonclick", row);
 	}
 	/*
 	const NextButtonWithClick = () => ({
@@ -99,16 +100,33 @@
 			type: 'datetime',
 			key: 'date',
 			styles: ['flex: 1',  'overflow: hidden'] //'max-width: 150px', 'min-width: 100px',
-		},
-		{
-			component: NextButton, //Having issues with built in buttons, have to build wrappers around them all??
-			key: 'button',
-			type: 'button',
-			styles: ['flex: 1', "justify-items:right", "padding-right:20px", 'overflow: hidden'],
 		}
+		,
+		{
+			title: 'Action',
+			key: 'action',
+			type: 'button',
+			onclick: () => alert("in"),
+			component: NextButtonNavigation,
+			componentProps: () => ({
+				row: { name: 'Fake Name', email: 'fake@example.com' },
+				callback: () => handleButtonClick_1('fake-row')
+			})
+		},  
+		{
+    	title: 'DB Key',
+    	key: 'dbkey',
+    	type: 'text',
+    	styles: ['flex: 1', 'overflow: hidden', "display:none"],
+  },
+
+
+
+
 	]
 
 </script>
+
 
 {#if list.length != 0}
 <PaginatedTable
@@ -129,3 +147,5 @@
 	body="No staff members fit your current filter or search terms. Please clear or change your filters or search to view results."
 />
 {/if}
+
+<NextButtonNavigation row={{ name: "Test", email: "test@example.com" }} callback={() => console.log("Clicked!")} />

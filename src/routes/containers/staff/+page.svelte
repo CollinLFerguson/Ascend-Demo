@@ -22,8 +22,8 @@
 <Page styles={["horizontal-padding:5vw", "justify-content:left"]}>
     <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:100%; gap:60px; max-width:80vw"> <!--Whole page-->
         <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:95%; gap:20px"> <!--Header Section-->
-            <div style="height:8vw; border-left:4px solid #E0E7FF; justify-content:left;"> <!--header bar components-->
-                <PageHeader titleText="Staff" titleJustification="left" styles={["justify-content:left"]} >
+            <div style="height:8vw; display:flex; justify-content:left;"> <!--header bar components-->
+                <PageHeader titleText="Staff" titleJustification="left" styles={["justify-content:left", "width:100%!important"]} >
                 </PageHeader>
             </div>
             <div style="display:flex; flex-direction:column;  gap: 20px;">
@@ -65,7 +65,7 @@
                 <hr>
                 <div style="display:flex; gap: 10px; justify-content:left">
                     {#if currentTab == "My Staff"}
-                        <PreviewStaffTable fromSearch={true /*fromSearch*/} showNothing={false}></PreviewStaffTable> <!-- Add callback for fetching staff associated with this user -->
+                        <PreviewStaffTable fromSearch={fromSearch} showNothing={false}></PreviewStaffTable> <!-- Add callback for fetching staff associated with this user -->
                     {:else}
                         <PreviewStaffTable fromSearch={fromSearch} showNothing={true}></PreviewStaffTable> <!-- Add callback for fetching all staff -->
                     {/if}

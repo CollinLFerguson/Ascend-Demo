@@ -1,19 +1,24 @@
 <script>
-    import { NextButton } from "ascend-ui";
-    export let rowData;
-    export let handleButtonClick;
+    import { NextButton } from 'ascend-ui'
+    export let row
+    export let callback = () => {}
+  
 
-    export let rest = {};
+  function handleClick(event) {
+    const parentEl = event.currentTarget.parentElement.parentElement.parentElement
 
-    function handleButtonClick1(){
-		console.log(window.location="/components/staffInfo");
-	}
-    function printRowData(rowData){
-        console.log("Row Data", rowData);
-    }
+    const children = parentEl.querySelectorAll('*')
+    children.forEach(child => {
+      const text = child.textContent.trim()
+      if (text) {
+        console.log(text)
+      }
+    })
+  }
 
-</script>
 
-<NextButton
-    callback={(rowData) => printRowData(rowData)}
-/>
+
+  </script>
+  
+  <button type="button" on:click={handleClick}>Click Me</button>
+  

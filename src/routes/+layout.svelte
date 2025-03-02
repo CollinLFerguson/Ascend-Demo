@@ -1,77 +1,38 @@
 <script>
-	import './styles.css'
-    import { AscendLogoIcon, HeaderBar, HomeIcon, Main, NavBar, ProfileButton, Shell, TemplatesIcon, ToastArea } from 'ascend-ui'
-
-    const NavIcon = AscendLogoIcon
-
-    const navBarContents = {
-        startOpen: true,
-        primaryPageList: [
-            {
-                    startOpen: true,
-                    icon: HomeIcon,
-                    text: 'Home',
-                    url: '/',
-            },
-            {
-                    startOpen: true,
-                    icon: HomeIcon,
-                    text: 'Metrics',
-                    url: '/',
-                    sublinks: []
-            },
-            {
-                startOpen: true,
-                icon: HomeIcon,
-                text: 'Staff',
-                url: '/containers/staff',
-            },
-            {
-                startOpen: true,
-                icon: HomeIcon,
-                text: 'Caregivers',
-                url: '/containers/staff',
-            },
-            {
-                startOpen: true,
-                icon: HomeIcon,
-                text: 'Children',
-                url: '/containers/staff',
-            },
-            {
-                startOpen: true,
-                icon: HomeIcon,
-                text: 'Administration',
-                url: '/containers/staff',
-            },
-            {
-                icon: TemplatesIcon,
-                text: 'About Me',
-                url: '/containers/aboutme'
-            },
-        ],
-    }
+    import './styles.css'
+    import { browser } from "$app/environment";
+    import { goto } from "$app/navigation";
+    import { Main, Shell, ToastArea } from "ascend-ui";
+    import { authStore } from "../stores/authStore";
+    import { onMount } from "svelte";
+    
+    /**
+     * @type {{ isAuthenticated: any; token?: null; userID?: null; }}
+     */
+    /*
+     let auth;
+    authStore.subscribe(value => auth = value);
+   
+    onMount(() => {
+        if (browser) {
+            if (auth && !auth.isAuthenticated) {
+                goto("/auth", { replaceState: true, reload: true });
+            } else {
+                goto("/containers")
+            }
+        }else {console.log("No browser")}
+    });*/
+    
 </script>
+
 <svelte:head>
     <title>Ascend Innovations: Demo</title>
-    <link rel="icon" type="image/png" href="./src/routes/assets/favicon.ico"/>
+    <link rel="icon" type="image/png" href="/favicon.png"/>
 </svelte:head>
 <Shell>
-    <NavBar 
-        keepOpen={true}
-        openHeaderComponent={NavIcon}
-        closedHeaderComponent={NavIcon}
-        {navBarContents}
-    />
     <Main>
-        <div style="overflow:auto">
-            <HeaderBar style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                    <ProfileButton url="/" />
-            </HeaderBar>
-        </div>
-        <div >
-        <slot />
+        <div>
+            <slot />
         </div>
     </Main>
-    <ToastArea />
 </Shell>

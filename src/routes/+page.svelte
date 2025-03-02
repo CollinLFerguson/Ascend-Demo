@@ -1,22 +1,31 @@
 <script>
-    import{Button, Card, LoginCard, LoginPage, Page, PageBody, SelectorInput} from 'ascend-ui'
-    export let data;
-    const optionsList = ["Super Admin User","Supervisor User","Home User"]
+    import { browser } from "$app/environment";
+    import { goto } from "$app/navigation";
+    import { Main, Shell, ToastArea } from "ascend-ui";
+    import { authStore } from "../stores/authStore";
+    import { onMount } from "svelte";
+
+    /**
+     * @type {{ isAuthenticated: any; token?: null; userID?: null; }}
+     */
+
+     let auth;
+    authStore.subscribe(value => auth = value);
+   
+    onMount(() => {
+        if (browser) {
+            if (auth && !auth.isAuthenticated) {
+                goto("/auth");
+            } else {
+                goto("/containers")
+            }
+        }else {console.log("No browser")}
+    });
 
 </script>
-<Page styles={["max-height:95vh"]}>
-<div style="height:80vh !important;">
-    <LoginPage>
-        <!--<PageBody size="full" styles={["display:flex", "justify-content: center", " align-items: center", "height: 100vh"]}>-->
-                <SelectorInput
-                bind:selectedValue={data.selectedUser}
-                defaultOptionValue="0"
-                id = "login-selector"
-                label="Select Login Type"
-                optionList = {optionsList}
-                /><br>
-                <Button styles={[]} text = "Login" callback={data.submitLogin}></Button>
-        <!--</PageBody>-->
-    </LoginPage>
-</div>
-</Page>
+
+<Shell> 
+    <Main>
+        <div><h1>Redirecting</h1></div>
+    </Main>
+</Shell>

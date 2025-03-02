@@ -10,7 +10,7 @@ export const authStore = {
   subscribe: authState.subscribe, // Exposes state read-only
   login: async (username: any, password: any) => {
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/api/loginController", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),

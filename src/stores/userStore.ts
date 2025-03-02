@@ -3,7 +3,7 @@ import { authStore } from "./authStore";
 
 export const userStore = derived(authStore, ($authStore, set) => {
   if ($authStore.isAuthenticated && $authStore.userID) {
-    fetch(`/api/users/${$authStore.userID}`, {
+    fetch(`/api/userController/${$authStore.userID}`, {
       headers: { Authorization: `Bearer ${$authStore.token}` }
     })
       .then(response => {
