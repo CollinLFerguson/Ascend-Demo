@@ -5,7 +5,7 @@
   
 
   function handleClick(event) {
-    /*
+    
     const parentEl = event.currentTarget.parentElement.parentElement.parentElement
 
     const children = parentEl.querySelectorAll('*')
@@ -16,7 +16,6 @@
       }
       // my api call(text)
     })
-      */
   }
 
 

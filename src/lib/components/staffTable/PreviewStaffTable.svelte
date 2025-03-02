@@ -58,8 +58,23 @@
 
 
 	
-	function handleButtonClick_1(row){
-		console.log("buttonclick", row);
+	async function handleButtonClick_1(){
+		console.log("here!")
+		try {
+			const response = await fetch("/api/DatabaseTest", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify("msg:hello"),
+			});
+
+			if (!response.ok) throw new Error("Databast failed");
+
+			const data = await response.json();
+
+			console.log(data)
+		} catch (error) {
+			console.error("Login error:", error);
+		}
 	}
 	/*
 	const NextButtonWithClick = () => ({
@@ -140,4 +155,4 @@
 />
 {/if}
 
-<NextButtonNavigation row={{ name: "Test", email: "test@example.com" }} callback={() => console.log("Clicked!")} />
+<NextButton callback={handleButtonClick_1} />

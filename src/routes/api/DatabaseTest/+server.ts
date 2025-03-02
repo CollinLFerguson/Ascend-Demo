@@ -1,7 +1,8 @@
 import type { RequestHandler } from './$types';
-//import { DatabaseConnector } from '$lib';
+import { DatabaseConnector } from '$lib/server';
+import { json } from '@sveltejs/kit';
 
-export async function GET() {
+export async function POST() {
     const db = new DatabaseConnector();
     try {
       await db.connect();
@@ -10,7 +11,7 @@ export async function GET() {
     } catch (error) {
       console.error('Database error:', error);
       return new Response(
-        JSON.stringify({ error: 'Database query failed' }),
+        JSON.stringify({ error: 'Database query failed: ' + error }),
         { status: 500 }
       );
     } finally {

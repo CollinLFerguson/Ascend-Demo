@@ -19,6 +19,7 @@
 
 </script>
 
+
 <Page styles={["horizontal-padding:5vw", "justify-content:left"]}>
     <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:100%; gap:60px; max-width:80vw"> <!--Whole page-->
         <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:95%; gap:20px"> <!--Header Section-->
