@@ -2,7 +2,7 @@
     import { browser } from "$app/environment";
     import { goto } from "$app/navigation";
     import { Main, Shell, ToastArea } from "ascend-ui";
-    import { authStore } from "../stores/authStore";
+    import { authStore } from "../lib/stores/authStore";
     import { onMount } from "svelte";
 
     /**

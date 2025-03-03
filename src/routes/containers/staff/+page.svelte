@@ -1,8 +1,18 @@
 <script>
+// @ts-nocheck
 	import { Accordion, MainContent, Button, PageBody, Page, Card, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar } from 'ascend-ui'
     import {GitHubIcon, LinkedInIcon, PreviewStaffTable} from '$lib/client/index'
-
-    export let data;
+    import { authenticatedUser } from '$lib/stores/authStore';
+    import { get } from 'svelte/store';
+    
+    let searchTerm = "";
+    let programs = [];
+    let allowedStatus = [];
+    let supervisorId;
+    let staffList;
+    
+    let currentUser = get(authenticatedUser) 
+    
     let tabList=[
         {name:"My Staff"},
         {name:"All Staff"}
@@ -10,6 +20,9 @@
 
     let currentTab = "My Staff"
     let fromSearch = false;
+
+    console.log("Authenitcated user", $authenticatedUser)
+
     /**
      * @param {{ detail: string; }} event
      */
@@ -18,7 +31,6 @@
     }
 
 </script>
-
 
 <Page styles={["horizontal-padding:5vw", "justify-content:left"]}>
     <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:100%; gap:60px; max-width:80vw"> <!--Whole page-->
@@ -63,12 +75,12 @@
                 <TabBar bind:currentTab {tabList} on:tabselect={handleTabSelect} />
             </div>
             <div style= "display:flex; flex-direction:column; gap:20px;">
-                <hr>
-                <div style="display:flex; gap: 10px; justify-content:left">
+                <hr style="min-width:1200px; background-color:#6F6697;">
+                <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px">
                     {#if currentTab == "My Staff"}
-                        <PreviewStaffTable fromSearch={fromSearch} showNothing={false}></PreviewStaffTable> <!-- Add callback for fetching staff associated with this user -->
+                        <PreviewStaffTable fromSearch={fromSearch} showNothing={false} supervisorId={currentUser?.dbkey}></PreviewStaffTable> <!-- Add callback for fetching staff associated with this user -->
                     {:else}
-                        <PreviewStaffTable fromSearch={fromSearch} showNothing={true}></PreviewStaffTable> <!-- Add callback for fetching all staff -->
+                        <PreviewStaffTable fromSearch={fromSearch} showNothing={false}></PreviewStaffTable> <!-- Add callback for fetching all staff -->
                     {/if}
                 </div>
             </div>

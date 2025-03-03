@@ -1,28 +1,11 @@
 <script>
     import './styles.css'
-    import { browser } from "$app/environment";
-    import { goto } from "$app/navigation";
     import { Main, Shell, ToastArea } from "ascend-ui";
-    import { authStore } from "../stores/authStore";
-    import { onMount } from "svelte";
+
     
-    /**
-     * @type {{ isAuthenticated: any; token?: null; userID?: null; }}
-     */
-    /*
-     let auth;
-    authStore.subscribe(value => auth = value);
-   
-    onMount(() => {
-        if (browser) {
-            if (auth && !auth.isAuthenticated) {
-                goto("/auth", { replaceState: true, reload: true });
-            } else {
-                goto("/containers")
-            }
-        }else {console.log("No browser")}
-    });*/
-    
+    // This exists to act as a main router between the auth layout (with no header, no navbar.)
+    //and the 'dashboard' layout (header, navbar, etc)
+
 </script>
 
 <svelte:head>

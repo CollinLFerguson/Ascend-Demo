@@ -8,10 +8,12 @@ export const POST: RequestHandler = async ({request}) => {
         const requestBody = await request.json();
 
         let dbkey:number = requestBody.dbkey
+        let supervisorId = requestBody.supervisorId
         let userType:string = requestBody.type
         let searchTerm:string = requestBody.term
         let allowedStatuses:string[] = requestBody.statuses
         let assignedProgramKeys:number[] = requestBody.programs
+        
 
         let sql = `
             WITH filtered_users AS (
@@ -29,6 +31,12 @@ export const POST: RequestHandler = async ({request}) => {
             // AND dbkey = $1
             sql += ` AND dbkey = $${params.length + 1}`;
             params.push(dbkey);
+        }
+
+        if (supervisorId) {
+            // AND dbkey = $1
+            sql += ` AND supervisor_id = $${params.length + 1}`;
+            params.push(supervisorId);
         }
 
         if (userType) {

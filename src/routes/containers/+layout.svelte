@@ -2,11 +2,11 @@
     import { browser } from '$app/environment';
     import { goto } from '$app/navigation';
     import { AscendLogoIcon, HeaderBar, HomeIcon, Main, NavBar, ProfileButton, Shell, TemplatesIcon, ToastArea } from 'ascend-ui'
-    import { authStore } from '../../stores/authStore';
+    import { authStore } from '../../lib/stores/authStore';
     
 
     const NavIcon = AscendLogoIcon
-
+    
     const navBarContents = {
         startOpen: true,
         primaryPageList: [
@@ -56,6 +56,7 @@
     }
     
     function customURL(){
+        authStore.logout()
         goto("/auth")
     }
 

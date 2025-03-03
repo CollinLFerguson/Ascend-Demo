@@ -1,5 +1,4 @@
 <script>
-    import { goto } from '$app/navigation';
     import { NextButton } from 'ascend-ui'
     export let row
     export let callback = () => {}
@@ -12,8 +11,6 @@
     const children = parentEl.querySelectorAll('*')
     const dbkey = children[0].textContent.trim()
     console.log("child DB:", dbkey)
-
-    goto(`/containers/staff-info/${dbkey}`)
     
     /*
     children.forEach(child => {
