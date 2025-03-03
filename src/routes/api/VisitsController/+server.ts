@@ -7,7 +7,11 @@ export const POST: RequestHandler = async ({request}) => {
     try {        
         const requestBody = await request.json();
 
-        let supervisorId:number = requestBody.supervisorId        
+        let supervisorId:number = requestBody.supervisorId  
+        let limit:number = requestBody.limit
+        
+        const params: any[] = [supervisorId];
+
         /*
         This will gather all caregivers whose supervisor is the passed staff member
         Then it will gather all visits 
@@ -28,9 +32,16 @@ export const POST: RequestHandler = async ({request}) => {
         JOIN children
             ON children.dbkey = visits.assigned_child_dbkey
         WHERE users.type = 'caregiver'
-            AND users.supervisor_id = $1;`
+            AND users.supervisor_id = $1`
         
-        const params: any[] = [supervisorId];
+        if(limit){
+            sql += ` LIMIT $2`
+            params.push(limit)
+        }
+
+        sql+= ";"
+
+        
 
         console.log(sql) 
         //return

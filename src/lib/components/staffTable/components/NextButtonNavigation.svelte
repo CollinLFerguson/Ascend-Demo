@@ -7,15 +7,16 @@
 
   function handleClick(event) {
     // Hack solution to get data from the currently selected row. 
-    const parentEl = event.currentTarget.parentElement.parentElement.parentElement
+    const parentElement = event.currentTarget.parentElement.parentElement.parentElement
 
-    const children = parentEl.querySelectorAll('*')
+    const children = parentElement.querySelectorAll('*')
     const dbkey = children[0].textContent.trim()
     console.log("child DB:", dbkey)
 
     goto(`/containers/staff-info/${dbkey}`)
     
     /*
+    //if I needed any other text.
     children.forEach(child => {
       const text = child.textContent.trim()
       if (text) {

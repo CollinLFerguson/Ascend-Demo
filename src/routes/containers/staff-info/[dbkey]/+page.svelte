@@ -7,6 +7,9 @@
     import { page } from '$app/stores';
     import { onMount } from 'svelte';
     import PreviewVisitsTable from '$lib/components/staffInfo/PreviewVisitsTable.svelte';
+    import PreviewChildrenTable from '$lib/components/staffInfo/PreviewChildrenTable.svelte';
+    import PreviewProgramsTable from '$lib/components/staffInfo/PreviewProgramsTable.svelte';
+    import PreviewStaffAssignedTable from '$lib/components/staffInfo/PreviewStaffAssignedTable.svelte';
     
     export let data;
 
@@ -85,13 +88,20 @@
             </div>
             <div style= "display:flex; flex-direction:column; gap:20px;">
                 <hr style="max-width:93%">
-                <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px">
+                <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px; padding-bottom:40px">
                     {#if currentTab == "Data"}
-                        <PreviewVisitsTable supervisorId={currentUser?.dbkey}> </PreviewVisitsTable> <!-- Add callback for fetching staff associated with this user -->
+                        <div style="display:flex; flex-direction:column; gap: 20px; justify-content:center; padding-top:20px">
+                            <PreviewVisitsTable supervisorId={currentUser?.dbkey}> </PreviewVisitsTable> <!-- Add callback for fetching staff associated with this user -->
+                            <PreviewChildrenTable supervisorId={currentUser?.dbkey}></PreviewChildrenTable>
+                            <PreviewProgramsTable supervisorId={currentUser?.dbkey}> </PreviewProgramsTable>
+                            <PreviewStaffAssignedTable supervisorId={currentUser?.dbkey}> </PreviewStaffAssignedTable>
+                        </div>
                     {:else}
                         <h1>personal details</h1>
                     {/if}
                 </div>
+                <br>
+                <br>
             </div>
         </div>
     </div>

@@ -96,56 +96,40 @@
             },
         ]
     </script>
-
 <Card styles={[
     "border: 2px solid var(--primary-200)", 
     "border-radius: 10px","padding-left: 10px","padding-right: 10px", 
     "padding-bottom: 20px", 
-    "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)",
-    "overflow-x:hidden!important"
+    "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)"
     ]}>
-    <div style="display:flex; flex-direction:column; overflow-y:hidden; overflow-x:hidden;">
+    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:hidden; overflow-x:hidden">
         <div style="display:flex; gap:20px; justify-content:space-between; padding-top:10px; padding-bottom:20px;">
         
             <!-- Left Section (HomeIcon + Title) -->
             <div style="display:flex; gap:20px; align-items:center; padding-bottom:20px">
                 <HomeIcon></HomeIcon>
-                <h2>Visits</h2>
+                <h2>Programs</h2>
                 <DefaultTooltipElement><div><p></p></div></DefaultTooltipElement>
             </div>
     
-            <!-- Right Section (Plus Icon + Add Text + Tooltip) -->
-            <div style="display:flex; gap:10px; align-items:center;">
-                
-                <!-- Make sure the inner div is also using align-items: center -->
-                <div style="display:flex; gap:10px; align-items:center;">
-                    <PlusSmallIcon></PlusSmallIcon>
-                    <h3>Add</h3>
+            <div style="display:flex; gap:0px; align-items:center;">
+                <div style="display:flex; gap:0px; align-items:center;">
+                    <h3>See More</h3>
                 </div>
-    
-                <h3>See More</h3>
                 <ChevronSingleRightSmallIcon></ChevronSingleRightSmallIcon>
             </div>
         </div>
-        <div style="display:flex; width:100%; justify-content:left; gap:15%; padding-bottom:45px; padding-left:30px; padding-right:30px;">
+        <div style="display:flex; width:100%; justify-content:left; gap:30%; padding-bottom:45px; padding-left:30px; padding-right:30px;">
             <div style="display:flex; flex-direction:column; justify-items:left;">
-                <p >Total Visits</p>
+                <p >Total Programs</p>
                 <h1>12</h1>
             </div>
             <div style="display:flex; flex-direction:column; justify-items:left">
-                <p >Complete</p>
+                <p >Active Programs</p>
                 <h1>9</h1>
             </div>
             <div style="display:flex; flex-direction:column; justify-items:left">
-                <p >Attempt</p>
-                <h1>1</h1>
-            </div>
-            <div style="display:flex; flex-direction:column; justify-items:left">
-                <p >Cancel</p>
-                <h1>1</h1>
-            </div>
-            <div style="display:flex; flex-direction:column; justify-items:left">
-                <p >No-Shows</p>
+                <p >Exited Programs</p>
                 <h1>1</h1>
             </div>
         </div>
@@ -158,8 +142,8 @@
         {:else if list.length == 0 && fromSearch == false}
         <Alert
             icon={AlertCircleSmallIcon}
-            title="No Visits To Display!"
-            body="Have an assigned caregiver"
+            title="No Programs To Display!"
+            body="Contact your administrator about adding programs"
             />
         {/if}
     </div>

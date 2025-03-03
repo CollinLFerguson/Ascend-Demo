@@ -110,7 +110,6 @@
 			title: 'Action',
 			key: 'action',
 			type: 'button',
-			onclick: () => alert("in"),
 			component: NextButtonNavigation,
 		}
 	]

@@ -45,3 +45,5 @@ In some places, workarounds were used to pass data to components as props. These
 - Svelte 4's store subscription process is a little hard to wrap my head around, see /src/stores/authStore.ts for example of incorrect use of subscribe. 
 
 - Unable to add sort chevrons to columns
+
+- Header components love to have a forced tab in them.
