@@ -115,9 +115,14 @@
 	]
 </script>
 
-<div style="min-width:75vw; overflow-y:hidden; overflow-x:auto">
+<div style="min-width:75vw; overflow-y:hidden; 
+	overflow-x:auto; border-radius: 10px; padding-bottom: 10px; 
+	box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)"
+	>
+
 {#if list.length != 0}
 <PaginatedTable
+
 	{columns}
 	{list}
 

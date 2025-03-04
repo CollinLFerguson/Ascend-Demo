@@ -1,11 +1,12 @@
 <script>
-    import { NextButton } from 'ascend-ui'
+    import { ArrowRightExtraSmallIcon, ArrowRightSmallIcon, LinkButton, NextButton } from 'ascend-ui'
     export let row
     export let callback = () => {}
   
 
   function handleClick(event) {
     // Hack solution to get data from the currently selected row. 
+    console.log("hello")
     const parentEl = event.currentTarget.parentElement.parentElement.parentElement
 
     const children = parentEl.querySelectorAll('*')
@@ -27,7 +28,9 @@
 
 
 
-  </script>
-  <NextButton callback={handleClick} />
+</script>
+  <div style="height:30px; align-content:center">
+    <LinkButton on:click={handleClick} rightIcon={ArrowRightExtraSmallIcon}/>
+</div>
   <!-- <button type="button" on:click={handleClick}>Click Me</button>-->
   

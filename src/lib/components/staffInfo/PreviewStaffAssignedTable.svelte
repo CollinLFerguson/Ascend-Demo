@@ -9,6 +9,8 @@
         
         export let supervisorId;
         
+        export let permissionLevel;
+
         export let showNothing = false; //testing function
     
         

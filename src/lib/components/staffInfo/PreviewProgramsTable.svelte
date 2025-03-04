@@ -2,13 +2,15 @@
     // @ts-nocheck
     
         import { onMount } from 'svelte';
-        import { DefaultTooltipElement, EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow, Toast, Card, HomeIcon, TooltipElement, PlusSmallIcon, ChevronSingleRightSmallIcon } from 'ascend-ui'
+        import { DefaultTooltipElement, EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow, Toast, Card, HomeIcon, TooltipElement, PlusSmallIcon, ChevronSingleRightSmallIcon, LinkButton } from 'ascend-ui'
         import NextButtonNavigation from './components/NextButtonNavigation.svelte';
         
         export let fromSearch = false; // if the request is utilizing the search function.
         
         export let supervisorId;
         
+        export let permissionLevel;
+
         export let showNothing = false; //testing function
     
         
@@ -112,11 +114,9 @@
                 <DefaultTooltipElement><div><p></p></div></DefaultTooltipElement>
             </div>
     
-            <div style="display:flex; gap:0px; align-items:center;">
-                <div style="display:flex; gap:0px; align-items:center;">
-                    <h3>See More</h3>
-                </div>
-                <ChevronSingleRightSmallIcon></ChevronSingleRightSmallIcon>
+            <div style="display:flex; gap:25px; align-items:center;">
+                
+                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} ></LinkButton>
             </div>
         </div>
         <div style="display:flex; width:100%; justify-content:left; gap:30%; padding-bottom:45px; padding-left:30px; padding-right:30px;">

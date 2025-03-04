@@ -10,9 +10,10 @@
     import PreviewChildrenTable from '$lib/components/staffInfo/PreviewChildrenTable.svelte';
     import PreviewProgramsTable from '$lib/components/staffInfo/PreviewProgramsTable.svelte';
     import PreviewStaffAssignedTable from '$lib/components/staffInfo/PreviewStaffAssignedTable.svelte';
+    import CaregiverMap from '$lib/components/staffInfo/CaregiverMap.svelte';
     
     export let data;
-
+        
     let currentStaffMember;
     
     $: if (data?.staffKey) {
@@ -91,10 +92,11 @@
                 <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px; padding-bottom:40px">
                     {#if currentTab == "Data"}
                         <div style="display:flex; flex-direction:column; gap: 20px; justify-content:center; padding-top:20px">
-                            <PreviewVisitsTable supervisorId={currentUser?.dbkey}> </PreviewVisitsTable> <!-- Add callback for fetching staff associated with this user -->
-                            <PreviewChildrenTable supervisorId={currentUser?.dbkey}></PreviewChildrenTable>
-                            <PreviewProgramsTable supervisorId={currentUser?.dbkey}> </PreviewProgramsTable>
-                            <PreviewStaffAssignedTable supervisorId={currentUser?.dbkey}> </PreviewStaffAssignedTable>
+                            <PreviewVisitsTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions}> </PreviewVisitsTable> <!-- Add callback for fetching staff associated with this user -->
+                            <CaregiverMap supervisorId={data?.staffKey}></CaregiverMap>
+                            <PreviewChildrenTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions}></PreviewChildrenTable>
+                            <PreviewProgramsTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions}> </PreviewProgramsTable>
+                            <PreviewStaffAssignedTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions}> </PreviewStaffAssignedTable>
                         </div>
                     {:else}
                         <h1>personal details</h1>

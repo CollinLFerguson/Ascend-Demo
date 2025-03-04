@@ -2,13 +2,15 @@
     // @ts-nocheck
     
         import { onMount } from 'svelte';
-        import { DefaultTooltipElement, EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow, Toast, Card, HomeIcon, TooltipElement, PlusSmallIcon, ChevronSingleRightSmallIcon } from 'ascend-ui'
+        import { DefaultTooltipElement, EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow, Toast, Card, HomeIcon, TooltipElement, PlusSmallIcon, ChevronSingleRightSmallIcon, LinkButton } from 'ascend-ui'
         import NextButtonNavigation from './components/NextButtonNavigation.svelte';
         
         export let fromSearch = false; // if the request is utilizing the search function.
         
         export let supervisorId;
         
+        export let permissionLevel;
+
         export let showNothing = false; //testing function
     
         
@@ -16,16 +18,16 @@
     
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
-                fetchVisits({supervisorId:supervisorId, limit:5});
+                fetchChildren({supervisorId:supervisorId, limit:5});
                 //list = [];
             } else {
                 list = [];
             }
         });
     
-        async function fetchVisits(params = {}) {
+        async function fetchChildren(params = {}) {
             try {
-                const response = await fetch("/api/VisitsController", {
+                const response = await fetch("/api/ChildrenInformationController", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(params),
@@ -35,7 +37,7 @@
     
                 const data = await response.json();
     
-                console.log(data)
+                console.log("Children: ", data)
                 
                 list = data.users;
     
@@ -49,51 +51,51 @@
                 title: 'DB Key',
                 key: 'dbkey',
                 type: 'text',
-                styles: ['flex: 1', 'overflow: hidden', "display:none"],
+                styles: ['overflow: hidden', "display:none", "height:0px"],
               },	
             {
                 title: 'Child',
                 key: 'child_name',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Caregiver',
                 key: 'staff_name',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'max-width: 150px', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
-            {
+            { //text ellipse not properly functioning.
                 title: 'Program',
-                key: 'program_name',
+                key: 'program_names',
                 type: 'text',
-                styles: ['flex: 2', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1','min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
-                title: 'Mileage',
-                key: 'mileage',
+                title: 'Age',
+                key: 'age',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 100px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Visit',
-                key: 'visit_date',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'max-width: 100px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Status',
                 component: StatusTag,
                 key: 'status',
                 type: 'tag',
-                tagMap: { 
-                    cancelled:'warning', 
-                    attempted:'warning', 
-                    unconfirmed:'neutral', 
-                    completed:'neutral',
+                tagMap: {  
+                    archived:'neutral', 
+                    active:'success',
                     "no-show":'warning', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
+                styles: ['flex: 1', 'max-width: 120px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
             },
+            {
+                title: 'Action',
+                key: 'action',
+                type: 'button',
+                component: NextButtonNavigation,
+                styles: ['flex: 1', 'max-width: 120px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold',], //'max-width: 140px', 'min-width: 100px',
+            }
+            
         ]
     </script>
 <Card styles={[
@@ -112,18 +114,14 @@
                 <DefaultTooltipElement><div><p></p></div></DefaultTooltipElement>
             </div>
     
-            <!-- Right Section (Plus Icon + Add Text + Tooltip) -->
-            <div style="display:flex; gap:10px; align-items:center;">
+    
+            <div style="display:flex; gap:25px; align-items:center;">
                 
-                <!-- Make sure the inner div is also using align-items: center -->
-                <div style="display:flex; gap:10px; align-items:center;">
-                    <PlusSmallIcon></PlusSmallIcon>
-                    <h3>Add</h3>
-                </div>
-    
-                <h3>See More</h3>
-                <ChevronSingleRightSmallIcon></ChevronSingleRightSmallIcon>
-    
+                {#if permissionLevel < 2}
+                <LinkButton text="Add" leftIcon={PlusSmallIcon} styles={["text-decoration: underline", "gap:5px"]}></LinkButton>
+                {/if}
+                
+                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} ></LinkButton>
             </div>
         </div>
         <div style="display:flex; width:100%; justify-content:left; gap:30%; padding-bottom:45px; padding-left:30px; padding-right:30px;">

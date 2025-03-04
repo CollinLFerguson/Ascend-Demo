@@ -1,9 +1,10 @@
 <script>
 // @ts-nocheck
-	import { Accordion, MainContent, Button, PageBody, Page, Card, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar } from 'ascend-ui'
+	import { Accordion, MainContent, Button, PageBody, Page, Card, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar, NextButton, ProfileButton } from 'ascend-ui'
     import {GitHubIcon, LinkedInIcon, PreviewStaffTable} from '$lib/client/index'
     import { authenticatedUser } from '$lib/stores/authStore';
     import { get } from 'svelte/store';
+    import AddStaffButton from './components/addStaffButton.svelte';
     
     let searchTerm = "";
     let programs = [];
@@ -36,8 +37,14 @@
     <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:100%; gap:60px; max-width:80vw"> <!--Whole page-->
         <div style="display:flex; flex-direction:column; align-items:top; justify-content:left; width:95%; gap:20px"> <!--Header Section-->
             <div style="height:8vw; display:flex; justify-content:left;"> <!--header bar components-->
-                <PageHeader titleText="Staff" titleJustification="left" styles={["justify-content:left", "width:100%!important"]} >
-                </PageHeader>
+                {#if currentUser.permissions <= 2}
+                    <PageHeader titleText="Staff" titleJustification="left" styles={["justify-content:left", "width:100%!important"]} headerButton={AddStaffButton}>
+                    </PageHeader>
+                {:else}
+                    <PageHeader titleText="Staff" titleJustification="left" styles={["justify-content:left", "width:100%!important"]}>
+                    </PageHeader>
+                {/if}
+
             </div>
             <div style="display:flex; flex-direction:column;  gap: 20px;">
                 <div style="display:flex; justify-content:left; width:100%; justify-content:space-between;  min-width:100; gap:30px">
@@ -76,7 +83,7 @@
             </div>
             <div style= "display:flex; flex-direction:column; gap:20px;">
                 <hr style="min-width:1200px; background-color:#6F6697;">
-                <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px">
+                <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px; padding-bottom: 20px">
                     {#if currentTab == "My Staff"}
                         <PreviewStaffTable fromSearch={fromSearch} showNothing={false} supervisorId={currentUser?.dbkey}></PreviewStaffTable> <!-- Add callback for fetching staff associated with this user -->
                     {:else}
