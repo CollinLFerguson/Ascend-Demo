@@ -1,15 +1,7 @@
 <script>
-import { Accordion, ChevronSingleRightSmallIcon, MainContent, Button, PageBody, Page, Card, HomeIcon, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar, Icon, EditButton, StandardButton, LinkButton } from 'ascend-ui'
-import {GitHubIcon, LinkedInIcon, PreviewStaffTable} from '$lib/client/index'
 import { authenticatedUser } from '$lib/stores/authStore';
 import { get } from 'svelte/store';
-import { page } from '$app/stores';
-import { onMount } from 'svelte';
 import PreviewVisitsTable from '$lib/components/staffInfo/PreviewVisitsTable.svelte';
-import PreviewChildrenTable from '$lib/components/staffInfo/PreviewChildrenTable.svelte';
-import PreviewProgramsTable from '$lib/components/staffInfo/PreviewProgramsTable.svelte';
-import PreviewStaffAssignedTable from '$lib/components/staffInfo/PreviewStaffAssignedTable.svelte';
-import CaregiverMap from '$lib/components/staffInfo/CaregiverMap.svelte';
 
 export let data;
         

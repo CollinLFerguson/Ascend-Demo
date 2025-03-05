@@ -2,7 +2,11 @@
 import { Client } from 'pg';
 import dotenv from 'dotenv';
 dotenv.config();
-
+/*
+Simple database controller. 
+Pulls in database info from the .env file found in the root directory.
+This must be configured in order to make the connection.
+*/
 export class DatabaseConnector {
   constructor() {
     // Optional: accept `config` in the constructor so you can override defaults.

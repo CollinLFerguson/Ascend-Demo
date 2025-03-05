@@ -1,9 +1,7 @@
 <script>
 import { authenticatedUser } from '$lib/stores/authStore';
 import { get } from 'svelte/store';
-import PreviewProgramsTable from '$lib/components/staffInfo/PreviewProgramsTable.svelte';
-    import PreviewChildrenTable from '$lib/components/staffInfo/PreviewChildrenTable.svelte';
-
+import PreviewChildrenTable from '$lib/components/staffInfo/PreviewChildrenTable.svelte';
 
 export let data;
         
