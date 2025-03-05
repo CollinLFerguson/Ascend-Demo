@@ -32,7 +32,10 @@ export const POST: RequestHandler = async ({request}) => {
         JOIN children
             ON children.dbkey = visits.assigned_child_dbkey
         WHERE users.type = 'caregiver'
-            AND users.supervisor_id = $1`
+            AND users.supervisor_id = $1
+        ORDER BY visits.visit_date DESC
+        `
+        
         
         if(limit){
             sql += ` LIMIT $2`
