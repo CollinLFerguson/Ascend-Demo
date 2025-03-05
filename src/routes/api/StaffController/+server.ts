@@ -88,7 +88,7 @@ export const POST: RequestHandler = async ({request}) => {
         FROM filtered_users fu
         LEFT JOIN users s ON fu.supervisor_id = s.dbkey
         LEFT JOIN programs p ON fu.program = p.dbkey
-        ORDER BY fu.last_name DESC
+        ORDER BY fu.last_name ASC
         `
 
         if(limit){
