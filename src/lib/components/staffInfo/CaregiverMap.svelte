@@ -45,6 +45,9 @@
                     marker: markers
                 }))
             }
+            else{
+                caregiverList=[]
+            }
             
             console.log("Caregiver Location: Post Transform", caregiverList)
 
@@ -66,7 +69,7 @@
             <!-- Left Section (HomeIcon + Title) -->
             <div style="display:flex; gap:20px; align-items:center; padding-bottom:20px">
                 <HomeIcon></HomeIcon>
-                <h2>Children</h2>
+                <h2>Caregivers</h2>
                 <DefaultTooltipElement><div><p></p></div></DefaultTooltipElement>
             </div>
         </div>

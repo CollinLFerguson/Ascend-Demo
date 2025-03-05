@@ -47,7 +47,7 @@
 
             </div>
             <div style="display:flex; flex-direction:column;  gap: 20px;">
-                <div style="display:flex; justify-content:left; width:100%; justify-content:space-between;  min-width:100; gap:30px">
+                <div style="display:flex; justify-content:left; width:100%; justify-content:space-between;  min-width:100; gap:30px; ">
                     <!--The Metric Card components do not have classes or else I would just give them a custom class-->
                     <MetricCard
                     styles={['min-width:120px', 'align-items:center', "max-height:100px", "box-shadow:4px 4px 10px rgba(0, 0, 0, 0.3)", "width:100%"]}

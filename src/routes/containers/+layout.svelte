@@ -72,7 +72,7 @@
     <Main>
         <div style="overflow:auto">
             <HeaderBar style="width: 100%; display: flex; justify-content: space-between; align-items: center;">
-                    <ProfileButton callback={customURL}/>
+                    <ProfileButton callback={customURL} />
             </HeaderBar>
         </div>
         <div >

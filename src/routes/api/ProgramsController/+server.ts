@@ -41,8 +41,7 @@ export const POST: RequestHandler = async ({request}) => {
             ON children_programs_assigned.child_dbkey = children.dbkey
         JOIN programs
             ON programs.dbkey = children_programs_assigned.program_dbkey
-        WHERE users.type = 'caregiver'
-            AND users.supervisor_id = $1
+        WHERE users.supervisor_id = $1
         `
                 
         if(limit){

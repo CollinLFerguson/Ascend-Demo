@@ -12,17 +12,20 @@
         export let permissionLevel;
 
         export let showNothing = false; //testing function
-    
+        
+        export let showSeeMore = true
+        
+        export let limit = 5
         
         export let list = [];
     
         $: if (supervisorId) {
-            fetchChildren({supervisorId:supervisorId, limit:5});
+            fetchChildren({supervisorId:supervisorId, limit:limit});
         }
 
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
-                fetchChildren({supervisorId:supervisorId, limit:5});
+                fetchChildren({supervisorId:supervisorId, limit:limit});
                 //list = [];
             } else {
                 list = [];
@@ -61,13 +64,13 @@
                 title: 'Child',
                 key: 'child_name',
                 type: 'text',
-                styles: ['flex: 1', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Caregiver',
                 key: 'staff_name',
                 type: 'text',
-                styles: ['flex: 1', 'max-width: 150px', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             { //text ellipse not properly functioning.
                 title: 'Program',
@@ -79,7 +82,7 @@
                 title: 'Age',
                 key: 'age',
                 type: 'text',
-                styles: ['flex: 1', 'max-width: 100px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Status',
@@ -90,7 +93,7 @@
                     archived:'neutral', 
                     active:'success',
                     "no-show":'warning', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
-                styles: ['flex: 1', 'max-width: 120px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
+                styles: ['flex: 1', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
             },
             {
                 title: 'Action',
@@ -101,7 +104,7 @@
             }
             
         ]
-        
+
     </script>
 <Card styles={[
     "border: 2px solid var(--primary-200)", 
@@ -109,7 +112,7 @@
     "padding-bottom: 20px", 
     "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)"
     ]}>
-    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:hidden; overflow-x:hidden">
+    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:hidden; overflow-x:hidden; padding-bottom:10px;">
         <div style="display:flex; gap:20px; justify-content:space-between; padding-top:10px; padding-bottom:20px;">
         
             <!-- Left Section (HomeIcon + Title) -->
@@ -125,8 +128,9 @@
                 {#if permissionLevel < 2}
                 <LinkButton text="Add" leftIcon={PlusSmallIcon} styles={["text-decoration: underline", "gap:5px"]}></LinkButton>
                 {/if}
-                
-                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} ></LinkButton>
+                {#if showSeeMore == true}
+                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} url={`/containers/children-info/${supervisorId}`}></LinkButton>
+                {/if}
             </div>
         </div>
         <div style="display:flex; width:100%; justify-content:left; gap:30%; padding-bottom:45px; padding-left:30px; padding-right:30px;">

@@ -72,51 +72,53 @@
 	}
 
 	const columns = [
-		{
-			title: 'DB Key',
-			key: 'dbkey',
-			type: 'text',
-			styles: ['flex: 1', 'overflow: hidden', "display:none"],
-  		},	
-		{
-			title: 'Name',
-			key: 'name',
-			type: 'text',
-			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-		},
-		{
-			title: 'Title',
-			key: 'title',
-			type: 'text',
-			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-		},
-		{
-			title: 'Program',
-			key: 'program_display_name',
-			type: 'text',
-			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-		},
-		{
-			title: 'Supervisor',
-			key: 'supervisor_name',
-			type: 'text',
-			styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-		},
-		{
-			title: 'Status',
-			component: StatusTag,
-			key: 'status',
-			type: 'tag',
-			tagMap: { active: 'warning', archived: 'neutral', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
-			styles: ['flex: 2', 'max-width: 250px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
-		},
-		{
-			title: 'Action',
-			key: 'action',
-			type: 'button',
-			component: NextButtonNavigation,
-		}
-	]
+    {
+        title: 'DB Key',
+        key: 'dbkey',
+        type: 'text',
+        styles: ['flex: 1', 'display: none'],
+    },	
+    {
+        title: 'Name',
+        key: 'name',
+        type: 'text',
+        styles: ['flex: 2', 'min-width: 180px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Title',
+        key: 'title',
+        type: 'text',
+        styles: ['flex: 2', 'min-width: 180px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Program',
+        key: 'program_display_name',
+        type: 'text',
+        styles: ['flex: 2', 'min-width: 200px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Supervisor',
+        key: 'supervisor_name',
+        type: 'text',
+        styles: ['flex: 1', 'min-width: 160px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Status',
+        component: StatusTag,
+        key: 'status',
+        type: 'tag',
+        tagMap: { active: 'warning', archived: 'neutral' },
+        styles: ['flex: 1', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Action',
+        key: 'action',
+        type: 'button',
+        component: NextButtonNavigation,
+        styles: ['flex: 1', 'min-width: 100px'],
+    }
+];
+
 </script>
 
 <div style="min-width:75vw; overflow-y:hidden; 

@@ -13,16 +13,19 @@
 
         export let showNothing = false; //testing function
     
+        export let showSeeMore = true
         
+        export let limit = 5;
+
         export let list = [];
     
         $: if (supervisorId) {
-            fetchVisits({supervisorId:supervisorId, limit:5});
+            fetchVisits({supervisorId:supervisorId, limit:limit});
         }
 
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
-                fetchVisits({supervisorId:supervisorId, limit:5});
+                fetchVisits({supervisorId:supervisorId, limit:limit});
                 //list = [];
             } else {
                 list = [];
@@ -51,57 +54,57 @@
         }
     
         const columns = [
-    {
-        title: 'DB Key',
-        key: 'dbkey',
-        type: 'text',
-        styles: ['flex: 1', 'display:none'],
-    },
-    {
-        title: 'Program',
-        key: 'program_display_name',
-        type: 'text',
-        styles: ['flex: 2', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-    },
-    {
-        title: 'Child',
-        key: 'child_name',
-        type: 'text',
-        styles: ['flex: 2', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-    },
-    {
-        title: 'Caregiver',
-        key: 'staff_name',
-        type: 'text',
-        styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-    },
-    {
-        title: 'Enrollment Date',
-        key: 'enrollment_date',
-        type: 'text',
-        styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-    },
-    {
-        title: 'Status',
-        component: StatusTag,
-        key: 'status',
-        type: 'tag',
-        tagMap: { 
-            active:'success', 
-            exited:'neutral',
-        },
-        styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-    }
-];
+            {
+                title: 'DB Key',
+                key: 'dbkey',
+                type: 'text',
+                styles: ['flex: 1', 'display:none'],
+            },
+            {
+                title: 'Program',
+                key: 'program_display_name',
+                type: 'text',
+                styles: ['flex: 2', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+            },
+            {
+                title: 'Child',
+                key: 'child_name',
+                type: 'text',
+                styles: ['flex: 2', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+            },
+            {
+                title: 'Caregiver',
+                key: 'staff_name',
+                type: 'text',
+                styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+            },
+            {
+                title: 'Enrollment Date',
+                key: 'enrollment_date',
+                type: 'text',
+                styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+            },
+            {
+                title: 'Status',
+                component: StatusTag,
+                key: 'status',
+                type: 'tag',
+                tagMap: { 
+                    active:'success', 
+                    exited:'neutral',
+                },
+                styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+            }
+        ];
+</script>
 
-    </script>
 <Card styles={[
     "border: 2px solid var(--primary-200)", 
     "border-radius: 10px","padding-left: 10px","padding-right: 10px", 
     "padding-bottom: 20px", 
     "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)"
     ]}>
-    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:hidden; overflow-x:hidden">
+    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:hidden; overflow-x:hidden; padding-bottom:10px;">
         <div style="display:flex; gap:20px; justify-content:space-between; padding-top:10px; padding-bottom:20px;">
         
             <!-- Left Section (HomeIcon + Title) -->
@@ -112,8 +115,10 @@
             </div>
     
             <div style="display:flex; gap:25px; align-items:center;">
+                {#if showSeeMore==true}
+                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} url={`/containers/programs-info/${supervisorId}`}></LinkButton>    
+                {/if}
                 
-                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} ></LinkButton>
             </div>
         </div>
         <div style="display:flex; width:100%; justify-content:left; gap:30%; padding-bottom:45px; padding-left:30px; padding-right:30px;">

@@ -11,18 +11,21 @@
         
         export let permissionLevel;
 
+        export let showSeeMore = true;
+
         export let showNothing = false; //testing function
-    
+
+        export let limit = 5
         
         export let list = [];
 
         $: if (supervisorId) {
-            fetchVisits({supervisorId:supervisorId, limit:5});
+            fetchVisits({supervisorId:supervisorId, limit:limit});
         }
 
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
-                fetchVisits({supervisorId:supervisorId, limit:5});
+                fetchVisits({supervisorId:supervisorId, limit:limit});
                 //list = [];
             } else {
                 list = [];
@@ -55,37 +58,37 @@
                 title: 'DB Key',
                 key: 'dbkey',
                 type: 'text',
-                styles: ['flex: 1', 'overflow: hidden', "display:none"],
-              },	
+                styles: ['flex: 1', 'display: none'],
+            },	
             {
                 title: 'Child',
                 key: 'child_name',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 2', 'min-width: 180px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Caregiver',
                 key: 'staff_name',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 2', 'min-width: 160px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Program',
                 key: 'program_name',
                 type: 'text',
-                styles: ['flex: 2', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 2', 'min-width: 200px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Mileage',
                 key: 'mileage',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 100px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'min-width: 80px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Visit',
                 key: 'visit_date',
                 type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+                styles: ['flex: 1', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
             },
             {
                 title: 'Status',
@@ -93,14 +96,16 @@
                 key: 'status',
                 type: 'tag',
                 tagMap: { 
-                    cancelled:'warning', 
-                    attempted:'warning', 
-                    unconfirmed:'neutral', 
-                    completed:'success',
-                    "no-show":'warning', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
-            },
-        ]
+                    cancelled: 'warning', 
+                    attempted: 'warning', 
+                    unconfirmed: 'neutral', 
+                    completed: 'success',
+                    "no-show": 'warning',
+                },
+                styles: ['flex: 1', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+            }
+        ];
+
     </script>
 
 <Card styles={[
@@ -110,7 +115,7 @@
     "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)",
     "overflow-x:hidden!important"
     ]}>
-    <div style="display:flex; flex-direction:column; overflow-y:hidden; overflow-x:hidden;">
+    <div style="display:flex; flex-direction:column; overflow-y:hidden; overflow-x:hidden; padding-bottom:10px;">
         <div style="display:flex; gap:20px; justify-content:space-between; padding-top:10px; padding-bottom:20px;">
         
             <!-- Left Section (HomeIcon + Title) -->
@@ -125,8 +130,9 @@
                 {#if permissionLevel < 2}
                 <LinkButton text="Add" leftIcon={PlusSmallIcon} styles={["text-decoration: underline", "gap:5px"]}></LinkButton>
                 {/if}
-                
-                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} ></LinkButton>
+                {#if showSeeMore == true}
+                <LinkButton text="See More" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} url={`/containers/visit-info/${supervisorId}`}></LinkButton>
+                {/if}
             </div>
         </div>
         <div style="display:flex; width:100%; justify-content:left; gap:15%; padding-bottom:45px; padding-left:30px; padding-right:30px;">
