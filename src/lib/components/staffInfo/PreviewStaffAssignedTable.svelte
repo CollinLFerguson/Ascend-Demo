@@ -22,7 +22,7 @@
     "padding-bottom: 20px", 
     "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)"
     ]}>
-    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:auto; overflow-x:hidden; padding-bottom:10px">
+    <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:visible; overflow-x:hidden; padding-bottom:10px;">
         <div style="display:flex; gap:20px; justify-content:space-between; padding-top:10px; padding-bottom:20px;">
         
             <!-- Left Section (HomeIcon + Title) -->

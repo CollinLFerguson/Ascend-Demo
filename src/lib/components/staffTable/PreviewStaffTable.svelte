@@ -128,10 +128,9 @@
 
 {#if list.length != 0}
 <PaginatedTable
-
 	{columns}
 	{list}
-
+	pageLength=10
 />
 {:else if list.length == 0 && fromSearch == false}
 <Alert

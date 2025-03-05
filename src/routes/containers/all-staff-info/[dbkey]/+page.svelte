@@ -2,6 +2,7 @@
 import { authenticatedUser } from '$lib/stores/authStore';
 import { get } from 'svelte/store';
 import PreviewStaffAssignedTable from '$lib/components/staffInfo/PreviewStaffAssignedTable.svelte';
+    import { page } from '$app/stores';
 
 
 export let data;
@@ -39,6 +40,7 @@ export let data;
     let currentUser = get(authenticatedUser) 
 
 </script>
-<div style="padding-right:10px; padding-bottom:10px overflow-y:show !important;">
+<!--Weird 92% VH issue to prevent autoscroll failure or cliping over / under page.-->
+<div style="padding-right:10px; padding-bottom:10px; overflow-y:scroll !important;  height: 92vh;">
     <PreviewStaffAssignedTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions} showSeeMore={false} limit={null}> </PreviewStaffAssignedTable> <!-- Add callback for fetching staff associated with this user -->
 </div>
