@@ -21,7 +21,7 @@ This will create all the necessary tables for running the program.
 
 
 ## Database Structure Diagram
-![Database Schema](lib/assets/FergusonCollinDatabaseSchema.png)
+![Database Schema](src/lib/assets/FergusonCollinDatabaseSchema.png)
 
 
 ## Explanation of Work
@@ -33,7 +33,7 @@ While the main focus was on developing a functional **frontend demo**, I found i
 In some places, workarounds were used to pass data to components as props. These involve searching the raw HTML of the document instead of relying on framework-based state management. These areas are marked in the code. This approach was taken due to my limited experience with Svelte, I'm sure more elegant solutions exist.
 
 ## User Flow Diagram
-![System Flow Diagram](lib/assets/SystemFlowDiagram.png)
+![System Flow Diagram](src/lib/assets/SystemFlowDiagram.png)
 
 ## Known Issues
 - **Pagination**: The tables are currently not requesting paginated data from the backend. Since the dataset is small and this is a demo, all matching data is sent in one request.
