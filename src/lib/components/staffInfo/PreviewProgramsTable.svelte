@@ -1,6 +1,9 @@
 <script>
     // @ts-nocheck
-    
+    /*
+    * This component fetches and displays a table of programs assigned to a subordinate of the passed supervisor.
+    * The table dynamically updates based on supervisor ID and user permissions.
+    */
         import { onMount } from 'svelte';
         import { DefaultTooltipElement, EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow, Toast, Card, HomeIcon, TooltipElement, PlusSmallIcon, ChevronSingleRightSmallIcon, LinkButton } from 'ascend-ui'
         import NextButtonNavigation from './components/NextButtonNavigation.svelte';

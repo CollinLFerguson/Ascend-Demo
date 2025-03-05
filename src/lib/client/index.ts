@@ -1,3 +1,6 @@
+/*
+This file is meant for client-side only imports. This prevents crashes related to NODE.js modules.
+*/
 // --- DEFAULT --- //
 export default './stylesheets/global.css'
 

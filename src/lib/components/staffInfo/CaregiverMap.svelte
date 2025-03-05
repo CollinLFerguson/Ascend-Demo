@@ -1,6 +1,10 @@
 <script>
 // @ts-nocheck
-
+/*
+This was a really fun component to work on. It calls the backend to fetch
+all caregiver users that work under the passed supervisor. 
+It then uses the GeoMap component to place the pins on the map.
+*/
 
     import { Alert, AlertCircleSmallIcon, Card, Chart, HomeIcon, DefaultTooltipElement } from "ascend-ui";
     import { onMount } from "svelte";
