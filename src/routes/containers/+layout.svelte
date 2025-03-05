@@ -14,13 +14,13 @@
                     startOpen: true,
                     icon: HomeIcon,
                     text: 'Home',
-                    url: '/',
+                    url: '/containers/database-schema',
             },
             {
                     startOpen: true,
                     icon: HomeIcon,
                     text: 'Metrics',
-                    url: '/',
+                    url: '',
                     sublinks: []
             },
             {

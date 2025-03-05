@@ -4,6 +4,7 @@
         import { onMount } from 'svelte';
         import { DefaultTooltipElement, EditButton, Page, PageBody, RadioInput, StatusTag, Table, PaginatedTable, NextButton, Alert, AlertCircleSmallIcon, ExportDataButton, TableRow, Toast, Card, HomeIcon, TooltipElement, PlusSmallIcon, ChevronDoubleRightSmallIcon, ChevronSingleRightSmallIcon } from 'ascend-ui'
         import NextButtonNavigation from './components/NextButtonNavigation.svelte';
+    import PreviewStaffTable from '../staffTable/PreviewStaffTable.svelte';
         
         export let fromSearch = false; // if the request is utilizing the search function.
         
@@ -12,91 +13,7 @@
         export let permissionLevel;
 
         export let showNothing = false; //testing function
-    
-        
-        export let list = [];
-    
-        onMount(() => { //Fetches the tabledata when the component is loaded 
-            if (!showNothing) {
-                fetchVisits({supervisorId:supervisorId, limit:5});
-                //list = [];
-            } else {
-                list = [];
-            }
-        });
-    
-        async function fetchVisits(params = {}) {
-            try {
-                const response = await fetch("/api/VisitsController", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(params),
-                });
-    
-                if (!response.ok) throw new Error("Databast failed");
-    
-                const data = await response.json();
-    
-                console.log(data)
-                
-                list = data.users;
-    
-            } catch (error) {
-                console.error("Login error:", error);
-            }
-        }
-    
-        const columns = [
-            {
-                title: 'DB Key',
-                key: 'dbkey',
-                type: 'text',
-                styles: ['flex: 1', 'overflow: hidden', "display:none"],
-              },	
-            {
-                title: 'Child',
-                key: 'child_name',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Caregiver',
-                key: 'staff_name',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Program',
-                key: 'program_name',
-                type: 'text',
-                styles: ['flex: 2', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Mileage',
-                key: 'mileage',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 100px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Visit',
-                key: 'visit_date',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Status',
-                component: StatusTag,
-                key: 'status',
-                type: 'tag',
-                tagMap: { 
-                    cancelled:'warning', 
-                    attempted:'warning', 
-                    unconfirmed:'neutral', 
-                    completed:'neutral',
-                    "no-show":'warning', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
-            },
-        ]
+
     </script>
 <Card styles={[
     "border: 2px solid var(--primary-200)", 
@@ -127,19 +44,7 @@
                 <h1>12</h1>
             </div>
         </div>
-        {#if list.length != 0}
-        <PaginatedTable
-            {columns}
-            {list}
-        
-        />
-        {:else if list.length == 0 && fromSearch == false}
-        <Alert
-            icon={AlertCircleSmallIcon}
-            title="No Programs To Display!"
-            body="Contact your administrator about adding programs"
-            />
-        {/if}
+        <PreviewStaffTable supervisorId={supervisorId} limit=5></PreviewStaffTable>
     </div>
     
 </Card>

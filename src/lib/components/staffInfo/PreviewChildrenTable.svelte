@@ -16,6 +16,10 @@
         
         export let list = [];
     
+        $: if (supervisorId) {
+            fetchChildren({supervisorId:supervisorId, limit:5});
+        }
+
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
                 fetchChildren({supervisorId:supervisorId, limit:5});
@@ -97,6 +101,7 @@
             }
             
         ]
+        
     </script>
 <Card styles={[
     "border: 2px solid var(--primary-200)", 

@@ -13,7 +13,7 @@ export const POST: RequestHandler = async ({request}) => {
         let searchTerm:string = requestBody.term
         let allowedStatuses:string[] = requestBody.statuses
         let assignedProgramKeys:number[] = requestBody.programs
-        
+        let limit:number = requestBody.limit        
 
         let sql = `
             WITH filtered_users AS (
@@ -89,6 +89,12 @@ export const POST: RequestHandler = async ({request}) => {
         LEFT JOIN users s ON fu.supervisor_id = s.dbkey
         LEFT JOIN programs p ON fu.program = p.dbkey
         `
+
+        if(limit){
+            // Suppose userType is also a column in your table?
+            sql += ` LIMIT $${params.length + 1}`;
+            params.push(limit);
+        }
 
         console.log(sql) 
         //return

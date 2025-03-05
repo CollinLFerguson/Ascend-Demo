@@ -1,6 +1,11 @@
 # Getting Started
+## Database Structure Diagram
+![Database Schema](assets/FergusonCollinDatabaseSchema.png)
 
-## Installation
+## User Flow Diagram
+![System Flow Diagram](assets/SystemFlowDiagram.png)
+
+# Installation
 
 To get started, run:
 
@@ -18,12 +23,8 @@ Modify the `.env` file to match your current database setup.
 
 ## Database Setup
 
-Run the `ascend-collin-Ferguson.sql` file to import the test data into the database.  
+Run the `ascend-collin-ferguson-demo.sql` file to import the test data into the database.  
 This will create all the necessary tables for running the program.
-
-```bash
-psql -U your_user -d your_database -f ascend-collin-Ferguson.sql
-```
 
 ## Explanation of Work
 

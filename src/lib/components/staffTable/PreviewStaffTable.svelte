@@ -11,15 +11,19 @@
 	export let programs = [];
 	export let allowedStatus = [];
 	export let supervisorId;
-	
+	export let limit;
+
 	export let showNothing = false; //testing function
 
-	
 	export let list = [];
+
+	$: if (supervisorId) {
+		fetchUsers({type:"staff", term:searchTerm, programs:programs, statuses:allowedStatus, supervisorId:supervisorId, limit:limit});
+	}
 
 	onMount(() => { //Fetches the tabledata when the component is loaded 
 		if (!showNothing) {
-			fetchUsers({type:"staff", term:searchTerm, programs:programs, statuses:allowedStatus, supervisorId:supervisorId});
+			fetchUsers({type:"staff", term:searchTerm, programs:programs, statuses:allowedStatus, supervisorId:supervisorId, limit:limit});
 			//list = [];
 		} else {
 			list = [];

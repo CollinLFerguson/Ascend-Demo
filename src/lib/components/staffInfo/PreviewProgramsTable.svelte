@@ -16,6 +16,10 @@
         
         export let list = [];
     
+        $: if (supervisorId) {
+            fetchVisits({supervisorId:supervisorId, limit:5});
+        }
+
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
                 fetchVisits({supervisorId:supervisorId, limit:5});
@@ -27,7 +31,7 @@
     
         async function fetchVisits(params = {}) {
             try {
-                const response = await fetch("/api/VisitsController", {
+                const response = await fetch("/api/ProgramsController", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(params),
@@ -47,56 +51,49 @@
         }
     
         const columns = [
-            {
-                title: 'DB Key',
-                key: 'dbkey',
-                type: 'text',
-                styles: ['flex: 1', 'overflow: hidden', "display:none"],
-              },	
-            {
-                title: 'Child',
-                key: 'child_name',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Caregiver',
-                key: 'staff_name',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Program',
-                key: 'program_name',
-                type: 'text',
-                styles: ['flex: 2', 'min-width: 250px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Mileage',
-                key: 'mileage',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 100px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Visit',
-                key: 'visit_date',
-                type: 'text',
-                styles: ['flex: 2', 'max-width: 150px', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
-            },
-            {
-                title: 'Status',
-                component: StatusTag,
-                key: 'status',
-                type: 'tag',
-                tagMap: { 
-                    cancelled:'warning', 
-                    attempted:'warning', 
-                    unconfirmed:'neutral', 
-                    completed:'neutral',
-                    "no-show":'warning', /*tooltips: { approved: 'Provider listing has been published to the external LocalHelpNow directory.' }*/},
-                styles: ['flex: 2', 'max-width: 250px', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'], //'max-width: 140px', 'min-width: 100px',
-            },
-        ]
+    {
+        title: 'DB Key',
+        key: 'dbkey',
+        type: 'text',
+        styles: ['flex: 1', 'display:none'],
+    },
+    {
+        title: 'Program',
+        key: 'program_display_name',
+        type: 'text',
+        styles: ['flex: 2', 'min-width: 150px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Child',
+        key: 'child_name',
+        type: 'text',
+        styles: ['flex: 2', 'min-width: 120px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Caregiver',
+        key: 'staff_name',
+        type: 'text',
+        styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Enrollment Date',
+        key: 'enrollment_date',
+        type: 'text',
+        styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    },
+    {
+        title: 'Status',
+        component: StatusTag,
+        key: 'status',
+        type: 'tag',
+        tagMap: { 
+            active:'success', 
+            exited:'neutral',
+        },
+        styles: ['flex: 1', 'min-width: 100px', 'white-space: nowrap', 'overflow: hidden', 'text-overflow: ellipsis', 'font-weight: bold'],
+    }
+];
+
     </script>
 <Card styles={[
     "border: 2px solid var(--primary-200)", 

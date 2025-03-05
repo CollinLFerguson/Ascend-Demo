@@ -15,7 +15,11 @@
     
         
         export let list = [];
-    
+
+        $: if (supervisorId) {
+            fetchVisits({supervisorId:supervisorId, limit:5});
+        }
+
         onMount(() => { //Fetches the tabledata when the component is loaded 
             if (!showNothing) {
                 fetchVisits({supervisorId:supervisorId, limit:5});

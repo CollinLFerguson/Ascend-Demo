@@ -1,6 +1,6 @@
 <script>
 // @ts-nocheck
-	import { Accordion, MainContent, Button, PageBody, Page, Card, HomeIcon, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar, Icon, EditButton, StandardButton } from 'ascend-ui'
+	import { Accordion, ChevronSingleRightSmallIcon, MainContent, Button, PageBody, Page, Card, HomeIcon, NewNotificationIcon, PageHeader, MetricCard, FilterAndSortButton, SearchBar, ExportCSVButton, ExportDataButton, TabBar, Icon, EditButton, StandardButton, LinkButton } from 'ascend-ui'
     import {GitHubIcon, LinkedInIcon, PreviewStaffTable} from '$lib/client/index'
     import { authenticatedUser } from '$lib/stores/authStore';
     import { get } from 'svelte/store';
@@ -17,6 +17,8 @@
     let currentStaffMember;
     
     $: if (data?.staffKey) {
+        console.log(data?.staffKey)
+        console.log("CHANGE")
         fetchCurrentStaff();
     }
 
@@ -33,8 +35,9 @@
     
                 const responseData = await response.json();
     
-                console.log(responseData)
+                
                 currentStaffMember = responseData.users[0];
+                console.log("Current Staff Member:",currentStaffMember)
     
             } catch (error) {
                 console.error("Login error:", error);
@@ -71,9 +74,16 @@
                 </PageHeader>
             </div>
             <div style="display:flex; flex-direction:column;  gap: 20px;">
+                {#if currentStaffMember?.supervisor_id}
+                <LinkButton text="View Supervisor" rightIcon={ChevronSingleRightSmallIcon} styles={["text-decoration: underline"]} url={'/containers/staff-info/' + currentStaffMember?.supervisor_id}></LinkButton>    
+                {/if}
                 <div style="display:flex; justify-content:left; width:100%; justify-content:space-between;">
                     <div style="display:flex; gap: 10px; justify-content:left">
+                        {#if currentStaffMember?.status === 'active'}
                         <ExportCSVButton classes={["button", "button-wrapper"]} text="Archive" Icon={HomeIcon}></ExportCSVButton>
+                        {:else}
+                            <ExportCSVButton classes={["button", "button-wrapper"]} text="Un-Archive" Icon={HomeIcon}></ExportCSVButton>
+                        {/if}
                         <ExportCSVButton text="Export Milage"></ExportCSVButton>
                     </div>
                     <div style="display:flex;  justify-content:right;">
@@ -92,6 +102,7 @@
                 <div style="display:flex; gap: 10px; justify-content:left; overflow-x:auto; min-width:1200px; padding-bottom:40px">
                     {#if currentTab == "Data"}
                         <div style="display:flex; flex-direction:column; gap: 20px; justify-content:center; padding-top:20px">
+                            <!-- data?.staffKey -->
                             <PreviewVisitsTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions}> </PreviewVisitsTable> <!-- Add callback for fetching staff associated with this user -->
                             <CaregiverMap supervisorId={data?.staffKey}></CaregiverMap>
                             <PreviewChildrenTable supervisorId={data?.staffKey} permissionLevel={currentUser?.permissions}></PreviewChildrenTable>

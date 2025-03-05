@@ -28,11 +28,12 @@ export const POST: RequestHandler = async ({request}) => {
             children.last_name,
             COALESCE(children.first_name || ' ' || children.last_name, 'N/A') AS child_name,
             children.assigned_staff_db,
-            COALESCE(children.age::TEXT, '0') as age,
-            children.status, 
             users.first_name || ' ' || users.last_name AS staff_name,
             users.supervisor_id,
-            programs.program_display_name
+           	programs.program_display_name,
+           	children_programs_assigned.enrollment_date,
+           	children_programs_assigned.status,
+            TO_CHAR(children_programs_assigned.enrollment_date, 'MM/DD/YYYY') AS enrollment_date
         FROM children
         JOIN users
             ON users.dbkey = children.assigned_staff_db
