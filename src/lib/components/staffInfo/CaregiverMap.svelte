@@ -103,7 +103,7 @@ It then uses the GeoMap component to place the pins on the map.
 
 <style>
     .geo-chart {
-        
+        box-shadow: none;
         max-width: 100vw;
         min-width: 1000px;
         height: 650px;
