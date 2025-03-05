@@ -64,7 +64,8 @@ It then uses the GeoMap component to place the pins on the map.
 <Card styles={[
     "border: 2px solid var(--primary-200)", 
     "border-radius: 10px","padding-left: 10px","padding-right: 10px", 
-    "padding-bottom: 20px"
+    "padding-bottom: 20px", 
+    "box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.3)"
     ]}>
     <div style="display:flex; flex-direction:column; min-width:75vw; overflow-y:hidden; overflow-x:hidden">
         <div style="display:flex; gap:20px; justify-content:space-between; padding-top:10px; padding-bottom:20px;">
